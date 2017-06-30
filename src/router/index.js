@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/components/Hello'
+import MainWindow from 'ç/MainWindow'
+import SecondLevelWindows from 'ç/SecondLevelWindows'
+import MenuBar from 'ç/MenuBar'
 
 Vue.use(Router)
 
@@ -8,8 +10,11 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: Hello
+      components: {
+        MenuBar: MenuBar,
+        default: MainWindow,
+        SLW: SecondLevelWindows
+      }
     }
   ]
 })
