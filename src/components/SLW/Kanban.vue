@@ -1,10 +1,5 @@
 <template>
-  <ul class="collection">
-    <li class="collection-item">Home</li>
-    <li class="collection-item">Projects</li>
-    <li class="collection-item">GANTT</li>
-    <li class="collection-item">Kanban</li>
-  </ul>
+    <p> Kanban </p>
 </template>
 
 <script>
@@ -22,6 +17,16 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
 }
 
 a {
