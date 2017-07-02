@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <router-view name="MenuBar"> </router-view>
-    <div class="row">
-      <router-view class="col s3 m3 l3 xl3"></router-view>
-      <router-view class="col s9 m9 l9 xl9" name="SLW"></router-view>
-    </div>
+    <router-view> </router-view>
   </div>
 </template>
 

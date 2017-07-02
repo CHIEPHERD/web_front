@@ -1,10 +1,8 @@
 <template>
-  <ul class="collection">
-    <li class="collection-item">Home</li>
-    <li class="collection-item">Projects</li>
-    <li class="collection-item">GANTT</li>
-    <li class="collection-item">Kanban</li>
-  </ul>
+  <div>
+    <router-view class="col s6" name="Inscription"></router-view>
+    <router-view class="col s6" name="Connexion"></router-view>
+  </div>
 </template>
 
 <script>
