@@ -7,10 +7,10 @@ import Auth from 'ç/Auth/Auth'
 import Connexion from 'ç/Auth/Connexion'
 import Inscription from 'ç/Auth/Inscription'
 
-import Home from 'ç/SLW/Home'
-import Kanban from 'ç/SLW/Kanban'
-import GANTT from 'ç/SLW/GANTT'
-import Project from 'ç/SLW/Project'
+import Home from 'ç/Modules/Home'
+import Kanban from 'ç/Modules/Kanban'
+import GANTT from 'ç/Modules/GANTT'
+import Project from 'ç/Modules/Project'
 
 Vue.use(Router)
 
