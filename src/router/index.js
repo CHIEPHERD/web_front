@@ -12,6 +12,10 @@ import Kanban from 'ç/Modules/Kanban'
 import GANTT from 'ç/Modules/GANTT'
 import Project from 'ç/Modules/Project'
 
+import ReadProject from 'ç/ProjectPart/ReadProject'
+import AddProject from 'ç/ProjectPart/AddProject'
+import SearchProject from 'ç/ProjectPart/SearchProject'
+
 Vue.use(Router)
 
 export default new Router({
@@ -37,7 +41,18 @@ export default new Router({
             {
               path: 'Project',
               name: 'Project',
-              component: Project
+              component: Project,
+              children: [
+                {
+                  path: '',
+                  components:
+                  {
+                    default: ReadProject,
+                    add: AddProject,
+                    search: SearchProject
+                  }
+                }
+              ]
             },
             {
               path: 'GANTT',

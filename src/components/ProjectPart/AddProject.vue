@@ -1,8 +1,14 @@
 <template>
-    <h3> Kanban </h3>
+  <div class="row">
+    <div class="col s4 offset-s8">
+      <a class="waves-effect waves-light btn"><i class="material-icons left">library_add</i>
+        Ajouter un projet</a>
+    </div>
+  </div>
 </template>
 
 <script>
+
 export default {
   name: 'hello',
   data () {
@@ -19,17 +25,7 @@ h1, h2 {
   font-weight: normal;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
 a {
-  color: #42b983;
+  color: white;
 }
 </style>

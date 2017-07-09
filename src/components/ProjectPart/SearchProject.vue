@@ -1,5 +1,13 @@
 <template>
-    <h3> Kanban </h3>
+
+  <div class="row">
+    <div class="input-field col s4 offset-s8">
+      <i class="material-icons prefix">search</i>
+      <input type="text" id="autocomplete-input" class="autocomplete">
+      <label for="autocomplete-input">Search project</label>
+    </div>
+  </div>
+
 </template>
 
 <script>
@@ -17,16 +25,6 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
 }
 
 a {

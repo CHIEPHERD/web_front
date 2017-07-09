@@ -1,5 +1,5 @@
 <template>
-    <p> Principal </p>
+    <h3> Accueil </h3>
 </template>
 
 <script>

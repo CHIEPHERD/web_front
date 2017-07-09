@@ -1,5 +1,12 @@
 <template>
-    <p> Project </p>
+  <div class="row">
+    <div class="card col s10 offset-s1">
+      <h3> Projets </h3>
+      <router-view class="row" name="search">recherche</router-view>
+      <router-view class="row">Projets</router-view>
+      <router-view class="row" name="add">bouton d'ajout</router-view>
+    </div>
+  </div>
 </template>
 
 <script>
