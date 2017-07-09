@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <router-view class="col s6" name="Inscription"></router-view>
-    <router-view class="col s6" name="Connexion"></router-view>
+  <div class="row">
+    <router-view class="col offset-s1 s4" name="Inscription"></router-view>
+    <router-view class="col offset-s2 s4" name="Connexion"></router-view>
   </div>
 </template>
 

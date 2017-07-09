@@ -1,26 +1,29 @@
 <template>
   <div>
-    <ul id="dropdown1" class="dropdown-content">
-      <li><a href="#!">one</a></li>
-      <li><a href="#!">two</a></li>
+    <ul id="profil-dropdown" class="dropdown-content">
+      <li><a href="#!">Préférences</a></li>
       <li class="divider"></li>
-      <li><a href="#!">three</a></li>
+      <li><a href="#!">Déconnexion</a></li>
     </ul>
     <nav>
       <div class="nav-wrapper">
+      <ul id="nav-mobile-left" class="left hide-on-med-and-down">
+      <li><a href="#" data-activates="slide-out" id="leftSideBarTrigger"><i class="material-icons">view_headline</i></a></li>
+      </ul>
         <a href="#" class="brand-logo center">Logo</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="#">Other Stuff</a></li>
-          <li><a href="#">Stuff</a></li>
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Profil<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li><a href="#">Home</a></li>
+          <li><a class="dropdown-button" href="#!" data-activates="profil-dropdown">Nom prénom<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
       </div>
     </nav>
+
     <router-view class="row"></router-view>
   </div>
 </template>
 
 <script>
+import $ from 'jquery'
 
 export default {
   name: 'hello',
@@ -28,6 +31,9 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  mounted () {
+    $('#leftSideBarTrigger').sideNav()
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="card-content row">
+  <div class="card">
 
     <span class="card-title">Connexion</span>
     <div class="input-field col s12">

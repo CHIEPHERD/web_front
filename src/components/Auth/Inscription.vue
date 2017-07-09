@@ -1,7 +1,17 @@
 <template>
-  <div>
-    <p>Inscription</p>
-  </div>
+  <div class="card">
+    <span class="card-title">inscription</span>
+    <div class="input-field col s12">
+      <input id="emailInscription" type="text" class="validate">
+      <label for="email">Email</label>
+    </div>
+    <div class="row">
+     <div class="input-field col s12">
+       <input id="passwordInscription" type="password" class="validate">
+       <label for="password">Password</label>
+     </div>
+   </div>
+ </div>
 </template>
 
 <script>

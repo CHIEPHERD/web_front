@@ -1,18 +1,22 @@
 <template>
   <div>
-    <div class="col s3 m3 l3 xl3">
-      <ul class="collection">
-        <router-link class="collection-item" :to="{ name: 'Home' }">Home</router-link>
-        <router-link class="collection-item" :to="{ name: 'Project' }">Project</router-link>
-        <router-link class="collection-item" :to="{ name: 'GANTT' }">GANTT</router-link>
-        <router-link class="collection-item" :to="{ name: 'Kanban'}">Kanban</router-link>
-      </ul>
-    </div>
-    <router-view class="col s9 m9 l9 xl9"></router-view>
+    <ul id="slide-out" class="side-nav">
+      <li> <router-link class="collection-item" :to="{ name: 'Home' }">Home</router-link></li>
+      <li> <router-link class="collection-item" :to="{ name: 'Project' }">Project</router-link></li>
+      <li> <router-link class="collection-item" :to="{ name: 'Kanban'}">Kanban</router-link> </li>
+      <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+      <li><a href="#!">Second Link</a></li>
+      <li><div class="divider"></div></li>
+      <li><a class="subheader">Subheader</a></li>
+      <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+    </ul>
+
+    <router-view class="col s12"></router-view>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'hello',
   data () {
