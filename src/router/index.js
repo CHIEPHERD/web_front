@@ -11,10 +11,15 @@ import Home from 'ç/Modules/Home'
 import Kanban from 'ç/Modules/Kanban'
 import GANTT from 'ç/Modules/GANTT'
 import Project from 'ç/Modules/Project'
+import Task from 'ç/Modules/Task'
 
 import ReadShortProject from 'ç/ProjectPart/ReadShortProject'
 import AddProjectButton from 'ç/ProjectPart/AddProjectButton'
 import SearchProject from 'ç/ProjectPart/SearchProject'
+
+import NewTask from 'ç/Task/NewTask'
+import ReadTask from 'ç/Task/ReadTask'
+import DeleteTask from 'ç/Task/DeleteTask'
 
 Vue.use(Router)
 
@@ -37,6 +42,28 @@ export default new Router({
               path: 'Kanban',
               name: 'Kanban',
               component: Kanban
+            },
+            {
+              path: 'Task',
+              name: 'Task',
+              component: Task,
+              children: [
+                {
+                  path: 'New',
+                  name: 'NewTask',
+                  component: NewTask
+                },
+                {
+                  path: 'Read',
+                  name: 'ReadTask',
+                  component: ReadTask
+                },
+                {
+                  path: 'Delete',
+                  name: 'DeleteTask',
+                  component:DeleteTask
+                }
+              ]
             },
             {
               path: 'Project',

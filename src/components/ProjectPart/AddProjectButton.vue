@@ -5,7 +5,7 @@
         Ajouter un projet</a>
     </div>
 
-  <!-- Modal Structure -->
+  <!-- Behind Add Button - Modal Structure -->
     <div id="addProjectModal" class="modal">
       <div class="modal-content">
         <h4>Nouveau Projet</h4>
