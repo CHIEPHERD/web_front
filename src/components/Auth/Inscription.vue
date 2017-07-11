@@ -1,6 +1,20 @@
 <template>
   <div class="card">
+
     <span class="card-title">inscription</span>
+
+    <div class="input-field col s12">
+      <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+      <label for="first_name">First Name</label>
+    </div>
+    <div class="input-field col s12">
+      <input placeholder="Placeholder" id="last_name" type="text" class="validate">
+      <label for="last_name">Last Name</label>
+    </div>
+    <div class="input-field col s12">
+      <input placeholder="Placeholder" id="nick_name" type="text" class="validate">
+      <label for="nick_name">Pseudo</label>
+    </div>
     <div class="input-field col s12">
       <input id="emailInscription" type="text" class="validate">
       <label for="email">Email</label>
@@ -11,6 +25,7 @@
        <label for="password">Password</label>
      </div>
    </div>
+
  </div>
 </template>
 

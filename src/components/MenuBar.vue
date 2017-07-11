@@ -13,7 +13,8 @@
         <a href="#" class="brand-logo center">Logo</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="#">Home</a></li>
-          <li><a class="dropdown-button" href="#!" data-activates="profil-dropdown">Nom prénom<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li> <router-link :to="{ name: 'Auth' }">Connexion</router-link></li>
+          <li><a class="dropdown-button" href="#" data-activates="profil-dropdown">Nom prénom<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
       </div>
     </nav>
