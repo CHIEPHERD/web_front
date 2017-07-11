@@ -1,5 +1,5 @@
 <template>
-    <h3> Accueil </h3>
+    <router-view> </router-view>
 </template>
 
 <script>

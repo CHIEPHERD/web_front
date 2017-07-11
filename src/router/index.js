@@ -12,6 +12,7 @@ import Kanban from 'ç/Modules/Kanban'
 import GANTT from 'ç/Modules/GANTT'
 import Project from 'ç/Modules/Project'
 import Task from 'ç/Modules/Task'
+import User from 'ç/Modules/User'
 
 import ReadShortProject from 'ç/ProjectPart/ReadShortProject'
 import AddProjectButton from 'ç/ProjectPart/AddProjectButton'
@@ -20,6 +21,9 @@ import SearchProject from 'ç/ProjectPart/SearchProject'
 import NewTask from 'ç/Task/NewTask'
 import ReadTask from 'ç/Task/ReadTask'
 import DeleteTask from 'ç/Task/DeleteTask'
+
+import CreateUser from 'ç/Users/CreateUser'
+import ReadUser from 'ç/Users/ReadUser'
 
 Vue.use(Router)
 
@@ -61,7 +65,24 @@ export default new Router({
                 {
                   path: 'Delete',
                   name: 'DeleteTask',
-                  component:DeleteTask
+                  component: DeleteTask
+                }
+              ]
+            },
+            {
+              path: 'User',
+              name: 'User',
+              component: User,
+              children: [
+                {
+                  path: 'Read',
+                  name: 'ReadUser',
+                  component: ReadUser
+                },
+                {
+                  path: 'Create',
+                  name: 'CreateUser',
+                  component: CreateUser
                 }
               ]
             },
