@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import VueX from 'vuex'
+import MyStoreObject from './store'
 import vueKanban from 'vue-kanban'
 import App from './App'
 import router from './router'
@@ -12,23 +13,12 @@ Vue.config.productionTip = false
 Vue.use(VueX)
 Vue.use(vueKanban)
 
+const store = new VueX.Store(MyStoreObject)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: { App }
 })
-
-const store = new VueX.Store({
-  state: {
-    count: 0
-  },
-  mutations: {
-    increment (state) {
-      state.count++
-    }
-  }
-})
-store.commit('increment')
-console.log(store.state.count)
