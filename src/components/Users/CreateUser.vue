@@ -77,7 +77,7 @@
 
 <script>
 export default {
-  name: 'hello',
+  name: 'CreateUser',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

@@ -48,7 +48,7 @@
 
 <script>
 export default {
-  name: 'hello',
+  name: 'NewTask',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

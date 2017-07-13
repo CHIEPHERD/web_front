@@ -79,7 +79,7 @@
 
 <script>
 export default {
-  name: 'hello',
+  name: 'ReadTask',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

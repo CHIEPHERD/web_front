@@ -63,7 +63,7 @@
 import $ from 'jquery'
 
 export default {
-  name: 'hello',
+  name: 'AddProjectButton',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

@@ -17,7 +17,7 @@
 <script>
 
 export default {
-  name: 'hello',
+  name: 'LeftSideBar',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'hello',
+  name: 'Project',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

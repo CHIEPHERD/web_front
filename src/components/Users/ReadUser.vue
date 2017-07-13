@@ -91,7 +91,7 @@
 
 <script>
 export default {
-  name: 'hello',
+  name: 'ReadUser',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

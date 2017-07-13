@@ -31,7 +31,7 @@
 
 <script>
 export default {
-  name: 'hello',
+  name: 'Inscription',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

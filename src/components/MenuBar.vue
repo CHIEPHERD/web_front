@@ -27,7 +27,7 @@
 import $ from 'jquery'
 
 export default {
-  name: 'hello',
+  name: 'MenuBar',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
