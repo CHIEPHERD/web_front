@@ -1,17 +1,15 @@
 <template>
-  <div class="row">
-    <div class="offset-s1 s10 col card">
-      <h4> project 1 </h4>
-      <div class="col s10 offset-s1">
-        <p> Thalassius vero ea tempestate praefectus praetorio praesens
-          adrogantis ingenii, considerans incitationem eius ad multorum
-          non maturitate vel consiliis mitigabat, ut aliquotiens celsae
-          principum molliverunt, sed adversando iurgandoque cum parum
-          ad rabiem potius evibrabat, Augustum actus eius exaggerando
-        </p>
+  <div>
+    <div class="row" v-for="project in projects">
+      <div class="offset-s1 s10 col card">
+        <h4> {{project.title}}</h4>
+        <div class="col s10 offset-s1">
+          <p> {{project.corpus}}
+          </p>
+        </div>
+        <div class="offset-s8 s2 col">{{project.numberOfUser}} utilisateurs</div>
+        <div class="col s2">{{project.numberOfTask}} tâches</div>
       </div>
-      <div class="offset-s8 s2 col">6 utilisateurs</div>
-      <div class="col s2">65 tâches</div>
     </div>
   </div>
 </template>
@@ -22,7 +20,20 @@ export default {
   name: 'ReadShortProject',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      projects: [
+        {
+          title: 'project 1',
+          corpus: 'Thalassius vero ea tempestate praefectus praetorio praesens adrogantis ingenii, considerans incitationem eius ad multorum non maturitate vel consiliis mitigabat, ut aliquotiens celsae principum molliverunt, sed adversando iurgandoque cum parum ad rabiem potius evibrabat, Augustum actus eius exaggerando',
+          numberOfUser: 6,
+          numberOfTask: 65
+        },
+        {
+          title: 'project 2',
+          corpus: 'Thalassius vero ea tempestate praefectus praetorio praesens adrogantis ingenii, considerans incitationem eius ad multorum non maturitate vel consiliis mitigabat, ut aliquotiens celsae principum molliverunt, sed adversando iurgandoque cum parum ad rabiem potius evibrabat, Augustum actus eius exaggerando',
+          numberOfUser: 20,
+          numberOfTask: 40
+        }
+      ]
     }
   }
 }

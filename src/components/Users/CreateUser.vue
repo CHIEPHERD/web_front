@@ -2,22 +2,22 @@
   <div class="row">
     <div class="card col s10 offset-s1">
 
-      <span class="card-title">Robert William</span>
+      <span class="card-title">{{user.last_name}} '{{user.nick_name}}' {{user.first_name}}</span>
       <div class="input-field col s12">
         <input id="last_name" type="text" class="validate">
-        <label for="last_name">Robert</label>
+        <label for="last_name">{{user.last_name}}</label>
       </div>
       <div class="input-field col s12">
         <input id="first_name" type="text" class="validate">
-        <label for="first_name">William</label>
+        <label for="first_name">{{user.first_name}}</label>
       </div>
       <div class="input-field col s12">
         <input id="nick_name" type="text" class="validate">
-        <label for="nick_name">Leeroy Jenkins</label>
+        <label for="nick_name">{{user.nick_name}}</label>
       </div>
       <div class="input-field col s12">
         <input id="email" type="email" class="validate">
-        <label for="email">Email</label>
+        <label for="email">{{user.email}}</label>
       </div>
 
       <div class="input-field col s12">
@@ -80,7 +80,15 @@ export default {
   name: 'CreateUser',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      user: {
+        last_name: 'Robert',
+        first_name: 'William',
+        nick_name: 'Leeroy Jenkins',
+        email: '',
+        password: '',
+        role: ''
+      }
     }
   }
 }

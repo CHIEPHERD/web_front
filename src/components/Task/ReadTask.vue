@@ -16,8 +16,7 @@
         <div class="col s12">
           <h5>Type de tâche</h5>
           <select class="dropdown-button btn">
-            <option>Feature</option>
-            <option>Fix</option>
+            <option v-for="type in taskTypes">{{type}}</option>
           </select>
         </div>
       </div>
@@ -26,12 +25,8 @@
         <div class="col s12">
           <h5>Affectation</h5>
           <select class="row dropdown-button btn">
-            <option>Someone</option>
-            <option>Someone else</option>
-          </select>
-          <select class="row dropdown-button btn">
-            <option>Someone</option>
-            <option>Someone else</option>
+            <option v-for="people in affectation">
+              {{people.name}}</option>
           </select>
         </div>
       </div>
@@ -39,8 +34,7 @@
         <div class="col s12">
           <h5>Tâche parent</h5>
           <select class="dropdown-button btn">
-            <option>Some Task</option>
-            <option>Some other Task</option>
+            <option v-for="task in parentTask">{{task.name}}</option>
           </select>
         </div>
       </div>
@@ -49,12 +43,11 @@
         <div class="col s12">
           <h5>Sous tâches</h5>
           <ul>
-            <li>A task</li>
-            <li>another task</li>
+            <li v-for="task in childTask">{{task.name}}</li>
           </ul>
+          <h6> Ajouter une tâche existante </h6>
           <select class="dropdown-button btn">
-            <option>Ajouter une tâche existante</option>
-            <option>Some other task</option>
+            <option v-for="task in normalTask">{{task.name}}</option>
           </select>
         </div>
       </div>
@@ -82,7 +75,40 @@ export default {
   name: 'ReadTask',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      taskTypes: ['Feature', 'Fix'],
+      affectation: [
+        {
+          name: 'Someone'
+        },
+        {
+          name: 'Someone else'
+        }
+      ],
+      parentTask: [
+        {
+          name: 'parent Task 1'
+        },
+        {
+          name: 'parent Task 2'
+        }
+      ],
+      normalTask: [
+        {
+          name: 'normal Task 1'
+        },
+        {
+          name: 'normal Task 2'
+        }
+      ],
+      childTask: [
+        {
+          name: 'child Task 1'
+        },
+        {
+          name: 'child Task 2'
+        }
+      ]
     }
   }
 }

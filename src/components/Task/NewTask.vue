@@ -16,8 +16,7 @@
         <div class="col s12">
           <h5>Type de tâche</h5>
           <select class="dropdown-button btn">
-            <option>Feature</option>
-            <option>Fix</option>
+            <option v-for="type in taskTypes">{{type}}</option>
           </select>
         </div>
       </div>
@@ -26,15 +25,14 @@
         <div class="col s12">
           <h5>Affectation</h5>
           <select class="dropdown-button btn">
-            <option>Someone</option>
-            <option>Someone else</option>
+            <option v-for="people in affectation">{{people.name}}</option>
           </select>
         </div>
       </div>
 
       <div class="row">
         <div class="offset-s6 s3 col">
-          <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>Annuler</a>
+          <a class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Annuler</a>
         </div>
         <div class="col s3">
           <a class="waves-effect waves-light btn"><i class="material-icons left">done</i>Valider</a>
@@ -51,7 +49,16 @@ export default {
   name: 'NewTask',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      taskTypes: ['Feature', 'Fix'],
+      affectation: [
+        {
+          name: 'Someone'
+        },
+        {
+          name: 'Someone else'
+        }
+      ]
     }
   }
 }
@@ -65,5 +72,10 @@ h1, h2 {
 
 a {
   color: white;
+}
+
+select option {
+  background: white;
+  color: black
 }
 </style>

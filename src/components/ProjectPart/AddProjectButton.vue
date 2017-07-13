@@ -48,7 +48,7 @@
 
             <!-- Add the view of add user -->
           </div>
-          <a class="waves-effect waves-light btn"><i class="material-icons left">done</i>Valider</a>
+          <button @click="add_this_project" class="waves-effect waves-light btn"><i class="material-icons left">done</i>Valider</button>
 
         </form>
       </div>
@@ -69,6 +69,15 @@ export default {
       msg: 'Welcome to Your Vue.js App'
     }
   },
+  methods: {
+    add_this_project (event) {
+      /*
+      store.commit('increment')
+      console.log(store.state.count)
+      */
+    }
+  },
+
   mounted () {
     $('.modal').modal()
   }
