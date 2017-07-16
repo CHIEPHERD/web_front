@@ -18,22 +18,9 @@
 
 export default {
   name: 'ReadShortProject',
-  data () {
-    return {
-      projects: [
-        {
-          title: 'project 1',
-          corpus: 'Thalassius vero ea tempestate praefectus praetorio praesens adrogantis ingenii, considerans incitationem eius ad multorum non maturitate vel consiliis mitigabat, ut aliquotiens celsae principum molliverunt, sed adversando iurgandoque cum parum ad rabiem potius evibrabat, Augustum actus eius exaggerando',
-          numberOfUser: 6,
-          numberOfTask: 65
-        },
-        {
-          title: 'project 2',
-          corpus: 'Thalassius vero ea tempestate praefectus praetorio praesens adrogantis ingenii, considerans incitationem eius ad multorum non maturitate vel consiliis mitigabat, ut aliquotiens celsae principum molliverunt, sed adversando iurgandoque cum parum ad rabiem potius evibrabat, Augustum actus eius exaggerando',
-          numberOfUser: 20,
-          numberOfTask: 40
-        }
-      ]
+  computed: {
+    projects () {
+      return this.$store.state.project.filteredProjects
     }
   }
 }

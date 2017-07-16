@@ -71,7 +71,7 @@ export default {
   },
   methods: {
     add_this_project (event) {
-      this.$store.commit('increment')
+      this.$store.commit('add_project')
       console.log(this.$store.state.count)
       /*
       store.commit('increment')

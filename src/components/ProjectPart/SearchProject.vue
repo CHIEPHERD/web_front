@@ -3,7 +3,8 @@
   <div class="row">
     <div class="input-field col s4 offset-s8">
       <i class="material-icons prefix">search</i>
-      <input type="text" id="autocomplete-input" class="autocomplete">
+      <input :value="project" @input="search_project"
+        type="text" id="autocomplete-input" class="autocomplete">
       <label for="autocomplete-input">Search project</label>
     </div>
   </div>
@@ -16,7 +17,12 @@ export default {
   name: 'SearchProject',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      project: ''
+    }
+  },
+  methods: {
+    search_project (e) {
+      this.$store.commit('search_project', e.target.value)
     }
   }
 }
