@@ -43,51 +43,51 @@ export default new Router({
               component: Home
             },
             {
-              path: 'Kanban',
+              path: 'kanban',
               name: 'Kanban',
               component: Kanban
             },
             {
-              path: 'Task',
+              path: 'tasks',
               name: 'Task',
               component: Task,
               children: [
                 {
-                  path: 'New',
+                  path: 'new',
                   name: 'NewTask',
                   component: NewTask
                 },
                 {
-                  path: 'Read',
+                  path: 'read',
                   name: 'ReadTask',
                   component: ReadTask
                 },
                 {
-                  path: 'Delete',
+                  path: 'delete',
                   name: 'DeleteTask',
                   component: DeleteTask
                 }
               ]
             },
             {
-              path: 'User',
+              path: 'users',
               name: 'User',
               component: User,
               children: [
                 {
-                  path: 'Read',
+                  path: 'read',
                   name: 'ReadUser',
                   component: ReadUser
                 },
                 {
-                  path: 'Create',
+                  path: 'create',
                   name: 'CreateUser',
                   component: CreateUser
                 }
               ]
             },
             {
-              path: 'Project',
+              path: 'projects',
               name: 'Project',
               component: Project,
               children: [
@@ -108,8 +108,8 @@ export default new Router({
               component: GANTT
             },
             {
+              path: 'auth',
               name: 'Auth',
-              path: 'Auth',
               component: Auth,
               children: [
                 {
