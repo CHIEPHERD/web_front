@@ -74,15 +74,19 @@ export default {
   },
   methods: {
     add_this_project (event) {
+<<<<<<< HEAD
       console.log(this.$data)
       this.$store.commit('add_project', this.$data)
+=======
+      this.$store.commit('add_project')
+      console.log(this.$store.state.count)
+>>>>>>> 972913bc3bb8031c98df82bff63b3646e51a5124
       /*
       store.commit('increment')
       console.log(store.state.count)
       */
     }
   },
-
   mounted () {
     $('.modal').modal()
   }

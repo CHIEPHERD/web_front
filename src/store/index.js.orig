@@ -1,0 +1,25 @@
+import Vue from 'vue'
+import VueX from 'vuex'
+
+import auth from './auth'
+import project from './projects'
+<<<<<<< HEAD
+import users from './users'
+import tasks from './tasks'
+=======
+>>>>>>> 972913bc3bb8031c98df82bff63b3646e51a5124
+
+Vue.use(VueX)
+
+export default new VueX.Store({
+  modules: {
+    auth: auth,
+<<<<<<< HEAD
+    project: project,
+    users: users,
+    tasks: tasks
+=======
+    project: project
+>>>>>>> 972913bc3bb8031c98df82bff63b3646e51a5124
+  }
+})

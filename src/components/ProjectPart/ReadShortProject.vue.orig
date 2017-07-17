@@ -25,14 +25,14 @@ export default {
   computed: {
     projects () {
       return this.$store.state.project.filteredProjects
-  computed: {
-    projects () {
-      return this.$store.state.project.filteredProjects
+<<<<<<< HEAD
     }
   },
   methods: {
     detail_project (e) {
       this.$state.commit('detail_project', this.$data)
+=======
+>>>>>>> 972913bc3bb8031c98df82bff63b3646e51a5124
     }
   }
 }
