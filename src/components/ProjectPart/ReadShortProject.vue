@@ -25,9 +25,6 @@ export default {
   computed: {
     projects () {
       return this.$store.state.project.filteredProjects
-  computed: {
-    projects () {
-      return this.$store.state.project.filteredProjects
     }
   },
   methods: {
