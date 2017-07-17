@@ -3,12 +3,16 @@ import VueX from 'vuex'
 
 import auth from './auth'
 import project from './projects'
+import users from './users'
+import tasks from './tasks'
 
 Vue.use(VueX)
 
 export default new VueX.Store({
   modules: {
     auth: auth,
-    project: project
+    project: project,
+    users: users,
+    tasks: tasks
   }
 })

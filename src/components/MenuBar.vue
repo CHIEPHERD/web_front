@@ -35,6 +35,7 @@ export default {
   },
   mounted () {
     $('#leftSideBarTrigger').sideNav()
+    $('.modal').modal()
   }
 }
 </script>

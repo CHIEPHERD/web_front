@@ -48,8 +48,7 @@ export default {
         numberOfTask: 40
       }
     ],
-    selectedProject: { },
-    newProject: { }
+    selectedProject: { }
   },
   mutations: {
     search_project (state, value) {
@@ -59,8 +58,17 @@ export default {
     select_project (state, id) {
       console.log('add_project')
     },
-    add_project (state) {
+    add_project (state, data) {
       console.log('add_project')
+      let project = {
+        title: data.project_name,
+        corpus: data.description,
+        initials: data.initials,
+        numberOfUser: 0,
+        numberOfTask: 0
+      }
+
+      state.projects = _.concat(state.projects, project)
     }
   }
 }

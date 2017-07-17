@@ -4,11 +4,15 @@
       <div class="offset-s1 s10 col card">
         <h4> {{project.title}}</h4>
         <div class="col s10 offset-s1">
-          <p> {{project.corpus}}
-          </p>
+          <p> {{project.corpus}}</p>
         </div>
-        <div class="offset-s8 s2 col">{{project.numberOfUser}} utilisateurs</div>
-        <div class="col s2">{{project.numberOfTask}} tâches</div>
+        <div class="row">
+          <div class="offset-s6 s2 col">{{project.numberOfUser}} utilisateurs</div>
+          <div class="col s2">{{project.numberOfTask}} tâches</div>
+          <div class="col s2">
+            <button @click="detail_project" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">subject</i></button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -21,6 +25,11 @@ export default {
   computed: {
     projects () {
       return this.$store.state.project.filteredProjects
+    }
+  },
+  methods: {
+    detail_project (e) {
+      this.$state.commit('detail_project', this.$data)
     }
   }
 }

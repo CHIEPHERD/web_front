@@ -13,9 +13,9 @@
      </div>
     </div>
     <div class="row">
-     <button @click="connection" class="btn waves-effect waves-light" type="submit" name="action">Valider
-      <i class="material-icons right">send</i>
-    </button>
+      <button @click="connection" class="btn waves-effect waves-light" type="submit" name="action">Valider
+        <i class="material-icons right">send</i>
+      </button>
     </div>
 
   </div>

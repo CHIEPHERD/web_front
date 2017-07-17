@@ -19,21 +19,24 @@
       <label for="nick_name">Pseudo</label>
     </div>
     <div class="input-field col s12">
-      <input id="emailInscription" type="text"
-      :value="email" @input="set_email" class="validate">
-      <label for="emailInscription">Email</label>
+      <input id="email_inscription" type="text"
+        :value="email" @input="set_email" class="validate">
+      <label for="email_inscription">Email</label>
+    </div>
+    <div class="input-field col s12">
+      <input id="password_inscription" type="password"
+        :value="password" @input="set_password" class="validate">
+      <label for="password_inscription">Mot de passe</label>
+    </div>
+    <div class="input-field col s12">
+      <input id="confirm_password_inscription" type="password"
+        :value="confirm_password" @input="set_password" class="validate">
+      <label for="confirm_password_inscription">Mot de passe</label>
     </div>
     <div class="row">
-     <div class="input-field col s12">
-       <input id="passwordInscription" type="password"
-       :value="password" @input="set_password" class="validate">
-       <label for="passwordInscription">Password</label>
-     </div>
-   </div>
-   <div class="row">
-    <button @click="inscription" class="btn waves-effect waves-light" type="submit" name="action">Valider
-      <i class="material-icons right">send</i>
-    </button>
+     <button @click="inscription" class="btn waves-effect waves-light" type="submit" name="action">Valider
+       <i class="material-icons right">send</i>
+     </button>
   </div>
 
  </div>
@@ -48,7 +51,8 @@ export default {
       last_name: this.$store.state.auth.inscription_user.last_name,
       nick_name: this.$store.state.auth.inscription_user.nick_name,
       email: this.$store.state.auth.inscription_user.email,
-      password: this.$store.state.auth.inscription_user.email
+      password: this.$store.state.auth.inscription_user.email,
+      confirm_password: ''
     }
   },
   methods: {

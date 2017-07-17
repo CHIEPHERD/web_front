@@ -12,19 +12,19 @@
         <form class="col s12">
           <div class="row">
             <div class="input-field col offset-s3 s6">
-              <input id="project_name" type="text" class="validate">
+              <input v-model="project_name" id="project_name" type="text" class="validate">
               <label for="project_name">Nom du projet</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col offset-s3 s6">
-              <input id="Initials" type="text" class="validate">
-              <label for="Initials">Nom du projet</label>
+              <input v-model="initials" id="initials" type="text" class="validate">
+              <label for="initials">Nom du projet</label>
             </div>
           </div>
           <div class="row">
             <div class="input-field col s12">
-              <textarea id="description" class="materialize-textarea"></textarea>
+              <textarea v-model="description" id="description" class="materialize-textarea"></textarea>
               <label for="description">Description</label>
             </div>
           </div>
@@ -40,7 +40,7 @@
             <div class="switch">
               <label>
                Off
-               <input type="checkbox">
+               <input type="checkbox" v-model="is_admin">
                <span class="lever"></span>
                On
               </label>
@@ -66,20 +66,22 @@ export default {
   name: 'AddProjectButton',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      project_name: '',
+      initials: '',
+      description: '',
+      is_admin: false
     }
   },
   methods: {
     add_this_project (event) {
-      this.$store.commit('add_project')
-      console.log(this.$store.state.count)
+      console.log(this.$data)
+      this.$store.commit('add_project', this.$data)
       /*
       store.commit('increment')
       console.log(store.state.count)
       */
     }
   },
-
   mounted () {
     $('.modal').modal()
   }
