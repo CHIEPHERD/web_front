@@ -1,3 +1,4 @@
+import _ from 'lodash'
 
 export default {
   state: {
@@ -24,8 +25,9 @@ export default {
     selectedUser: { }
   },
   mutations: {
-    search_user (state, user) {
-      console.log('search_user')
+    search_user (state, userLastName, project) {
+      state.filteredUsers = _.filter(state.users,
+        function (u) { return _.startsWith(u.last_name, userLastName) })
     },
     select_user (state) {
       console.log('select_user')

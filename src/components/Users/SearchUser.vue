@@ -1,9 +1,18 @@
 <template>
 
   <div class="row">
-    <div class="input-field col s4 offset-s8">
+    <div class="input-field col s4">
+    <select v-model="project_selected">
+      <option value="" disabled selected>Projet</option>
+      <option v-for="project in projects">{{project.name}}</option>
+
+    </select>
+    <label>Materialize Select</label>
+  </div>
+
+    <div class="input-field col s4 offset-s4">
       <i class="material-icons prefix">search</i>
-      <input :value="user" @input="search_user"
+      <input :value="user_last_name" @input="search_user"
         type="text" id="autocomplete-input" class="autocomplete">
       <label for="autocomplete-input">Search project</label>
     </div>
@@ -17,13 +26,14 @@ export default {
   name: 'SearchUser',
   data () {
     return {
-      project: '',
-      user: ''
+      projects: this.$store.state.projects.projects,
+      project_selected: {},
+      user_last_name: ''
     }
   },
   methods: {
     search_user (e) {
-      this.$store.commit('search_user', e.target.value)
+      this.$store.commit('search_user', e.target.value, this.$data.project_selected)
     }
   }
 }

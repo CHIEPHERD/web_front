@@ -75,7 +75,6 @@ export default {
   name: 'ReadTask',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
       taskTypes: ['Feature', 'Fix'],
       affectation: [
         {

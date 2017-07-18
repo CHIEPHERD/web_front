@@ -3,7 +3,7 @@
     <ul id="profil-dropdown" class="dropdown-content">
       <li><a href="#!">Préférences</a></li>
       <li class="divider"></li>
-      <li><a href="#!">Déconnexion</a></li>
+      <li><a href="#" @click="disconnect">Déconnexion</a></li>
     </ul>
     <nav>
       <div class="nav-wrapper">
@@ -31,6 +31,11 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods: {
+    disconnect (e) {
+      this.$store.dispatch('deconnection')
     }
   },
   mounted () {

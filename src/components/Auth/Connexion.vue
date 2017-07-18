@@ -37,8 +37,8 @@ export default {
     set_password (e) {
       this.$store.commit('set_connect_password', e.target.value)
     },
-    connection (event) {
-      this.$store.commit('connection')
+    connection (e) {
+      this.$store.dispatch('connection')
     }
   }
 }

@@ -30,8 +30,8 @@
     </div>
     <div class="input-field col s12">
       <input id="confirm_password_inscription" type="password"
-        :value="confirm_password" @input="set_password" class="validate">
-      <label for="confirm_password_inscription">Mot de passe</label>
+        :value="confirm_password" @input="set_cpassword" class="validate">
+      <label for="confirm_password_inscription">Confirmation de mot de passe</label>
     </div>
     <div class="row">
      <button @click="inscription" class="btn waves-effect waves-light" type="submit" name="action">Valider
@@ -47,18 +47,16 @@ export default {
   name: 'Inscription',
   data () {
     return {
-      first_name: this.$store.state.auth.inscription_user.first_name,
-      last_name: this.$store.state.auth.inscription_user.last_name,
-      nick_name: this.$store.state.auth.inscription_user.nick_name,
+      first_name: this.$store.state.auth.inscription_user.firstname,
+      last_name: this.$store.state.auth.inscription_user.lastname,
+      nick_name: this.$store.state.auth.inscription_user.nickname,
       email: this.$store.state.auth.inscription_user.email,
-      password: this.$store.state.auth.inscription_user.email,
-      confirm_password: ''
+      password: this.$store.state.auth.inscription_user.password,
+      confirm_password: this.$store.state.auth.inscription_user.password_confirmation
     }
   },
   methods: {
-    inscription (event) {
-      this.$store.commit('inscription')
-    },
+
     set_first_name (e) {
       this.$store.commit('set_first_name', e.target.value)
     },
@@ -73,6 +71,12 @@ export default {
     },
     set_password (e) {
       this.$store.commit('set_password', e.target.value)
+    },
+    set_cpassword (e) {
+      this.$store.commit('set_cpassword', e.target.value)
+    },
+    inscription (event) {
+      this.$store.dispatch('inscription')
     }
   }
 }
