@@ -17,7 +17,8 @@ export default {
     connect_user: {
       email: '',
       password: ''
-    }
+    },
+    is_connected: false
   },
   mutations: {
     set_last_name (state, lastName) {
@@ -43,27 +44,41 @@ export default {
     },
     set_connect_password (state, password) {
       state.connect_user.password = password
+    },
+    inverse_connected_status (state) {
+      state.is_connected = !state.is_connected
     }
   },
   actions: {
-    connection ({state}) {
-      axios.post(chiepherdFullPath + '/admin/login',
-        state.connect_user)
-      .then((response) => {
-        console.log('do what i need with response')
-        console.log(response)
-      }).catch((err) => {
-        console.log(err)
+    connection ({state, commit}) {
+      return new Promise((resolve, reject) => {
+        axios.post(chiepherdFullPath + '/admin/login',
+          state.connect_user)
+        .then((response) => {
+          commit('inverse_connected_status')
+          resolve(response)
+        }).catch((err) => {
+          reject(err)
+        })
       })
     },
-    inscription ({state}) {
-      axios.post(chiepherdFullPath + '/admin/register',
-        state.inscription_user)
-      .then((response) => {
-        console.log('do what i need with response')
-        console.log(response)
-      }).catch((err) => {
-        console.log(err)
+    inscription ({state, commit}) {
+      return new Promise((resolve, reject) => {
+        axios.post(chiepherdFullPath + '/admin/register',
+          state.inscription_user)
+        .then((response) => {
+          console.log('do what i need with response')
+          console.log(response)
+          commit('set_last_name', '')
+          commit('set_first_name', '')
+          commit('set_nick_name', '')
+          commit('set_email', '')
+          commit('set_password', '')
+          commit('set_cpassword', '')
+          resolve(response)
+        }).catch((err) => {
+          reject(err)
+        })
       })
     },
     deconnection ({state}) {

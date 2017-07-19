@@ -38,7 +38,9 @@ export default {
       this.$store.commit('set_connect_password', e.target.value)
     },
     connection (e) {
-      this.$store.dispatch('connection')
+      this.$store.dispatch('connection').then(
+        this.$router.push({name: 'Home'})
+      )
     }
   }
 }

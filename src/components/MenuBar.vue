@@ -1,10 +1,5 @@
 <template>
   <div>
-    <ul id="profil-dropdown" class="dropdown-content">
-      <li><a href="#!">Préférences</a></li>
-      <li class="divider"></li>
-      <li><a href="#" @click="disconnect">Déconnexion</a></li>
-    </ul>
     <nav>
       <div class="nav-wrapper">
       <ul id="nav-mobile-left" class="left hide-on-med-and-down">
@@ -13,8 +8,9 @@
         <a href="#" class="brand-logo center">Logo</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="#">Home</a></li>
-          <li> <router-link :to="{ name: 'Auth' }">Connexion</router-link></li>
-          <li><a class="dropdown-button" href="#" data-activates="profil-dropdown">Nom prénom<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li v-if="!is_connected"> <router-link :to="{ name: 'Auth' }">Connexion</router-link></li>
+          <li v-if="is_connected"> <a  href="#" @click="disconnect">Préférences</a></li>
+          <li v-if="is_connected"> <a href="#" @click="disconnect">Deconnexion</a></li>
         </ul>
       </div>
     </nav>
@@ -28,9 +24,9 @@ import $ from 'jquery'
 
 export default {
   name: 'MenuBar',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  computed: {
+    is_connected () {
+      return this.$store.state.auth.is_connected
     }
   },
   methods: {

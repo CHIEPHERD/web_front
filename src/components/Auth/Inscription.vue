@@ -76,7 +76,9 @@ export default {
       this.$store.commit('set_cpassword', e.target.value)
     },
     inscription (event) {
-      this.$store.dispatch('inscription')
+      this.$store.dispatch('inscription').then(
+        this.$router.push({name: 'Project'})
+      )
     }
   }
 }
