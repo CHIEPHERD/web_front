@@ -1,34 +1,56 @@
 import config from './config'
-import amqp from 'amqplib'
-import kue from 'kue'
+import { Paho } from 'mqttws31'
+// import kue from 'kue'
 
-export default function (routing_key) {
-  amqp.connect(config.host, (err, conn) => {
-    if(err) { console.log(err); return; }
+// impossible d'utiliser Rmq using amqplib on client side
+export default {
+  connect: function () {
+    return new Promise((resolve, reject) => {
+      console.log('mqtt start')
+      var client = new Paho.MQTT.Client(config.wsbroker, config.wsport, '/ws', 'myclientid_' + parseInt(Math.random() * 100, 10))
 
-    return conn
-  }).then((conn) => {
-    conn.createChannel((err, channel) => {
-      // bottleneck
-      const ex = 'chiepherd.main'
-      // q with all my answers
-      let response_q = routing_key + '.reply'
-      // my arguments
-      let payload = {}
+      client.onConnectionLost = (responseObject) => {
+        reject('CONNECTION LOST - ' + responseObject.errorMessage)
+      }
+      client.onMessageArrived = (message) => {
+        resolve('RECEIVE ON ' + message.destinationName + ' PAYLOAD ' + message.payloadString)
+        let p = JSON.parse(message.payloadString)
+        console.log(p)
+      }
 
-      // attraper le bottleneck
-      channel.assertExchange(ex, 'topic', {durable: true})
-      // publier à la bonne route sous-jacente
-      channel.publish(ex, routing_key, new Buffer.from(payload))
+      var options = {
+        userName: config.username,
+        password: config.password,
+        timeout: 3,
+        onSuccess: () => {
+          console.log('CONNECTION SUCCESS')
+          client.subscribe('/topic/' + config.bottleneck, {
+            qos: 1,
+            onSuccess: () => { console.log('subscribe success') },
+            onFailure: () => { console.log('subscribe failed') }
+          })
+          resolve(client)
+        },
+        onFailure: (message) => {
+          reject('CONNECTION FAILURE - ' + message.errorMessage)
+        }
+      }
 
-      return channel.assertQueue(response_q)
-    }).then((err,q) => {
-      channel.bindQueue(q.queue, ex)
-      return channel.consume(q.queue)
-    }).then((data) => {
-      console.log('My answer data are here')
-      console.log(data)
+      if (location.protocol === 'https:') {
+        options.useSSL = true
+      }
+
+      console.log('CONNECT TO ' + config.wsbroker + ':' + config.wsport)
+      client.connect(options)
     })
-  })
+  },
+  send: function (client, road, payload) {
+    return new Promise((resolve, reject) => {
+      let message = new Paho.MQTT.Message(JSON.stringify(payload))
 
+      message.destinationName = road
+      console.log('SEND ON ' + message.destinationName + ' PAYLOAD ' + payload)
+      client.send(message)
+    })
+  }
 }

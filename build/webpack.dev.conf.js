@@ -25,8 +25,8 @@ module.exports = merge(baseWebpackConfig, {
          $: 'jquery',
          jQuery: 'jquery',
          'window.$': 'jquery',
-         'window.jQuery': 'jquery',
-     }),
+         'window.jQuery': 'jquery'
+    }),
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),

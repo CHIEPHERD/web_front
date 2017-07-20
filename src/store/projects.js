@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import rmq from '../rabbitMQ'
 
 export default {
   state: {
@@ -69,6 +70,20 @@ export default {
       }
 
       state.projects = _.concat(state.projects, project)
+    }
+  },
+  actions: {
+    init_projects_from_rmq () {
+      // callRmqRoute('chiepherd.project', 'toto')
+      // let road = 'chiepherd.project.create'
+      let listRoad = 'chiepherd.project.list'
+      rmq.connect().then((client) => {
+        /* rmq.send(client, road, {email: 'test@email.fr', name: 'this', description: 'test from web', label: 'test Os térone'}) */
+        console.log('call good')
+        rmq.send(client, listRoad, {}).then(() => { console.log('msg back') })
+          .catch((err) => { console.log(err) })
+      })
+      .catch((err) => { console.log(err) })
     }
   }
 }

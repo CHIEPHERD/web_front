@@ -1,7 +1,8 @@
 # front-end
 
 > A Vue.js project
-
+Using [vue-kanban](https://github.com/BrockReece/vue-kanban)
+and Mqtt of Paho [MQTTws](https://www.eclipse.org/paho/files/jsdoc/symbols/Paho.MQTT.Message.html)
 ## Build Setup
 
 ``` bash

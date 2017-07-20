@@ -75,7 +75,8 @@ export default {
   methods: {
     add_this_project (event) {
       console.log(this.$data)
-      this.$store.commit('add_project', this.$data)
+      // this.$store.commit('add_project', this.$data)
+      this.$store.dispatch('init_projects_from_rmq')
     }
   },
 
