@@ -17,7 +17,7 @@
         <i class="material-icons right">send</i>
       </button>
     </div>
-
+    <label/> {{errorMessage}} </label>
   </div>
 </template>
 
@@ -27,7 +27,8 @@ export default {
   data () {
     return {
       email: this.$store.state.auth.connect_user.email,
-      password: this.$store.state.auth.connect_user.password
+      password: this.$store.state.auth.connect_user.password,
+      errorMessage: ''
     }
   },
   methods: {
@@ -40,7 +41,9 @@ export default {
     connection (e) {
       this.$store.dispatch('connection').then(
         this.$router.push({name: 'Home'})
-      )
+      ).catch((err) => {
+        this.$data.errorMessage = err
+      })
     }
   }
 }

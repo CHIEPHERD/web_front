@@ -10,7 +10,7 @@
           <div class="offset-s6 s2 col">{{project.numberOfUser}} utilisateurs</div>
           <div class="col s2">{{project.numberOfTask}} tâches</div>
           <div class="col s2">
-            <button @click="detail_project" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">subject</i></button>
+            <button @click="detail_project(project)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">subject</i></button>
           </div>
         </div>
       </div>
@@ -28,8 +28,10 @@ export default {
     }
   },
   methods: {
-    detail_project (e) {
-      this.$state.commit('detail_project', this.$data)
+    detail_project (project) {
+      console.log('detail_project')
+      this.$store.commit('detail_project', project)
+      this.$router.push({name: 'DetailProject'})
     }
   }
 }

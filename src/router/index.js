@@ -14,9 +14,11 @@ import Project from 'ç/Modules/Project'
 import Task from 'ç/Modules/Task'
 import Users from 'ç/Modules/Users'
 
+import ListProject from 'ç/ProjectPart/ListProject'
 import ReadShortProject from 'ç/ProjectPart/ReadShortProject'
 import AddProjectButton from 'ç/ProjectPart/AddProjectButton'
 import SearchProject from 'ç/ProjectPart/SearchProject'
+import ReadDetailsProject from 'ç/ProjectPart/ReadFullProject'
 
 import NewTask from 'ç/Task/NewTask'
 import ReadTask from 'ç/Task/ReadTask'
@@ -95,12 +97,23 @@ export default new Router({
               children: [
                 {
                   path: '',
-                  components:
-                  {
-                    default: ReadShortProject,
-                    add: AddProjectButton,
-                    search: SearchProject
-                  }
+                  component: ListProject,
+                  children: [
+                    {
+                      path: '',
+                      components:
+                      {
+                        default: ReadShortProject,
+                        add: AddProjectButton,
+                        search: SearchProject
+                      }
+                    }
+                  ]
+                },
+                {
+                  path: 'details',
+                  name: 'DetailProject',
+                  component: ReadDetailsProject
                 }
               ]
             },

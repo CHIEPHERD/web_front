@@ -37,6 +37,8 @@
      <button @click="inscription" class="btn waves-effect waves-light" type="submit" name="action">Valider
        <i class="material-icons right">send</i>
      </button>
+
+     <label> {{errorMessage}} </label>
   </div>
 
  </div>
@@ -52,11 +54,11 @@ export default {
       nick_name: this.$store.state.auth.inscription_user.nickname,
       email: this.$store.state.auth.inscription_user.email,
       password: this.$store.state.auth.inscription_user.password,
-      confirm_password: this.$store.state.auth.inscription_user.password_confirmation
+      confirm_password: this.$store.state.auth.inscription_user.password_confirmation,
+      errorMessage: {}
     }
   },
   methods: {
-
     set_first_name (e) {
       this.$store.commit('set_first_name', e.target.value)
     },
@@ -78,7 +80,9 @@ export default {
     inscription (event) {
       this.$store.dispatch('inscription').then(
         this.$router.push({name: 'Project'})
-      )
+      ).catch((err) => {
+        this.$data.errorMessage = err
+      })
     }
   }
 }

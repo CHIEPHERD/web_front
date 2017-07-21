@@ -49,7 +49,13 @@ export default {
         numberOfTask: 40
       }
     ],
-    selectedProject: { }
+    selectedProject: {
+      id: 3,
+      title: 'thas',
+      corpus: 'Thalassius vero ea tempestate praefectus praetorio praesens adrogantis ingenii, considerans incitationem eius ad multorum non maturitate vel consiliis mitigabat, ut aliquotiens celsae principum molliverunt, sed adversando iurgandoque cum parum ad rabiem potius evibrabat, Augustum actus eius exaggerando',
+      numberOfUser: 20,
+      numberOfTask: 40
+    }
   },
   mutations: {
     search_project (state, value) {
@@ -68,22 +74,26 @@ export default {
         numberOfUser: 0,
         numberOfTask: 0
       }
-
       state.projects = _.concat(state.projects, project)
+    },
+    detail_project (state, project) {
+      state.selectedProject = project
     }
   },
   actions: {
     init_projects_from_rmq () {
-      // callRmqRoute('chiepherd.project', 'toto')
-      // let road = 'chiepherd.project.create'
       let listRoad = 'chiepherd.project.list'
-      rmq.connect().then((client) => {
-        /* rmq.send(client, road, {email: 'test@email.fr', name: 'this', description: 'test from web', label: 'test Os térone'}) */
-        console.log('call good')
-        rmq.send(client, listRoad, {}).then(() => { console.log('msg back') })
-          .catch((err) => { console.log(err) })
+      rmq.connect(listRoad, {}).then((response) => {
+        console.log('object is here')
       })
       .catch((err) => { console.log(err) })
+    },
+    add_project_using_rmq ({state, commit}, data) {
+      let addRoad = 'chiepherd.project.create'
+
+      rmq.connect(addRoad, data).then((response) => {
+
+      }).catch((err) => { console.log(err) })
     }
   }
 }

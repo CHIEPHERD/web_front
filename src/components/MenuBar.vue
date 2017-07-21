@@ -3,7 +3,7 @@
     <nav>
       <div class="nav-wrapper">
       <ul id="nav-mobile-left" class="left hide-on-med-and-down">
-      <li><a href="#" data-activates="slide-out" id="leftSideBarTrigger"><i class="material-icons">view_headline</i></a></li>
+      <li v-if="is_connected"><a href="#" data-activates="slide-out" id="leftSideBarTrigger"><i class="material-icons">view_headline</i></a></li>
       </ul>
         <a href="#" class="brand-logo center">Logo</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">

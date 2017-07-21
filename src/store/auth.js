@@ -18,6 +18,7 @@ export default {
       email: '',
       password: ''
     },
+    admin: {},
     is_connected: false
   },
   mutations: {
@@ -45,6 +46,9 @@ export default {
     set_connect_password (state, password) {
       state.connect_user.password = password
     },
+    set_admin (state, admin) {
+      state.admin = admin
+    },
     inverse_connected_status (state) {
       state.is_connected = !state.is_connected
     }
@@ -55,7 +59,10 @@ export default {
         axios.post(chiepherdFullPath + '/admin/login',
           state.connect_user)
         .then((response) => {
+          commit('set_connect_email', '')
+          commit('set_connect_password', '')
           commit('inverse_connected_status')
+          commit('set_admin', response)
           resolve(response)
         }).catch((err) => {
           reject(err)
@@ -81,13 +88,16 @@ export default {
         })
       })
     },
-    deconnection ({state}) {
-      axios.get(chiepherdFullPath + '/admin/logout')
-      .then((response) => {
-        console.log('do what i need with response')
-        console.log(response)
-      }).catch((err) => {
-        console.log(err)
+    deconnection ({state, commit}) {
+      return new Promise((resolve, reject) => {
+        axios.get(chiepherdFullPath + '/admin/logout')
+        .then((response) => {
+          commit('inverse_connected_status')
+          commit('set_admin', {})
+          console.log(response)
+        }).catch((err) => {
+          console.log(err)
+        })
       })
     }
   }
