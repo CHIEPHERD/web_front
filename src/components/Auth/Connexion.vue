@@ -39,9 +39,9 @@ export default {
       this.$store.commit('set_connect_password', e.target.value)
     },
     connection (e) {
-      this.$store.dispatch('connection').then(
+      this.$store.dispatch('connection').then((response) => {
         this.$router.push({name: 'Home'})
-      ).catch((err) => {
+      }).catch((err) => {
         this.$data.errorMessage = err
       })
     }

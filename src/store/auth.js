@@ -72,20 +72,18 @@ export default {
     inscription ({state, commit}) {
       return new Promise((resolve, reject) => {
         axios.post(chiepherdFullPath + '/admin/register',
-          state.inscription_user)
-        .then((response) => {
-          console.log('do what i need with response')
-          console.log(response)
-          commit('set_last_name', '')
-          commit('set_first_name', '')
-          commit('set_nick_name', '')
-          commit('set_email', '')
-          commit('set_password', '')
-          commit('set_cpassword', '')
-          resolve(response)
-        }).catch((err) => {
-          reject(err)
-        })
+          state.inscription_user).then((response) => {
+            console.log(response)
+            commit('set_last_name', '')
+            commit('set_first_name', '')
+            commit('set_nick_name', '')
+            commit('set_email', '')
+            commit('set_password', '')
+            commit('set_cpassword', '')
+            resolve(response)
+          }).catch((err) => {
+            reject(err)
+          })
       })
     },
     deconnection ({state, commit}) {
@@ -94,9 +92,9 @@ export default {
         .then((response) => {
           commit('inverse_connected_status')
           commit('set_admin', {})
-          console.log(response)
+          resolve(response)
         }).catch((err) => {
-          console.log(err)
+          reject(err)
         })
       })
     }

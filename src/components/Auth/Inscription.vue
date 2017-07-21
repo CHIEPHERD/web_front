@@ -55,7 +55,7 @@ export default {
       email: this.$store.state.auth.inscription_user.email,
       password: this.$store.state.auth.inscription_user.password,
       confirm_password: this.$store.state.auth.inscription_user.password_confirmation,
-      errorMessage: {}
+      errorMessage: ''
     }
   },
   methods: {
@@ -78,9 +78,9 @@ export default {
       this.$store.commit('set_cpassword', e.target.value)
     },
     inscription (event) {
-      this.$store.dispatch('inscription').then(
+      this.$store.dispatch('inscription').then((response) => {
         this.$router.push({name: 'Project'})
-      ).catch((err) => {
+      }).catch((err) => {
         this.$data.errorMessage = err
       })
     }
