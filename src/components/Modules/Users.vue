@@ -15,9 +15,7 @@
           <router-view name="new"></router-view>
         </form>
       </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-      </div>
+
     </div>
   </div>
 </template>

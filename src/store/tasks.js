@@ -2,8 +2,15 @@ import rmq from '../rabbitMQ'
 
 export default {
   state: {
-    tasks: { },
-    newTask: { }
+    tasks: [
+      {
+        id: 1,
+        status: 'on-hold',
+        title: 'Test'
+      }
+    ],
+    newTask: { },
+    stages: ['on-hold', 'in-progress', 'needs-review', 'approved']
   },
   mutations: {
     select_task (state) {

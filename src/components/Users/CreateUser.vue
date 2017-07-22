@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="card col s10 offset-s1">
+    <div class="card col s12">
 
       <span class="card-title">{{user.last_name}} '{{user.nick_name}}' {{user.first_name}}</span>
       <div class="input-field col s12">
@@ -60,17 +60,17 @@
           </select>
         </div>
       </div>
+    </div>
 
+    <div class="modal-footer">
       <div class="row">
-        <div class="offset-s6 s3 col">
-          <a class="waves-effect waves-light btn"><i class="material-icons left">skip_previous</i>Annuler</a>
+        <div class="s4 col">
+          <button class="waves-effect waves-light btn"><i class="material-icons left">skip_previous</i>Annuler</button>
         </div>
-        <div class="col s3">
+        <div class="col s4 offset-s4">
           <button @click="creation_user" class="waves-effect waves-light btn"><i class="material-icons left">done</i>Valider</button>
         </div>
       </div>
-     </div>
-
     </div>
   </div>
 </template>

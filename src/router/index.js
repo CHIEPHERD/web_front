@@ -18,7 +18,7 @@ import ListProject from 'ç/ProjectPart/ListProject'
 import ReadShortProject from 'ç/ProjectPart/ReadShortProject'
 import AddProjectButton from 'ç/ProjectPart/AddProjectButton'
 import SearchProject from 'ç/ProjectPart/SearchProject'
-import ReadDetailsProject from 'ç/ProjectPart/ReadFullProject'
+import ReadDetailsProject from 'ç/ProjectPart/ReadDetailProject'
 
 import NewTask from 'ç/Task/NewTask'
 import ReadTask from 'ç/Task/ReadTask'

@@ -2,13 +2,13 @@
 
   <div class="row">
     <div class="input-field col s4">
-    <select v-model="project_selected">
-      <option value="" disabled selected>Projet</option>
-      <option v-for="project in projects">{{project.name}}</option>
+      <select v-model="project_selected">
+        <option value="" disabled selected>Projet</option>
+        <option v-for="project in projects">{{project.name}}</option>
 
-    </select>
-    <label>Materialize Select</label>
-  </div>
+      </select>
+      <label>Materialize Select</label>
+    </div>
 
     <div class="input-field col s4 offset-s4">
       <i class="material-icons prefix">search</i>

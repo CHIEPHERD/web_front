@@ -5,10 +5,10 @@
 
       <div class="row">
         <div class="s4 col">
-          <a class="waves-effect waves-light btn"><i class="material-icons left">skip_previous</i>Annuler</a>
+          <button class="waves-effect waves-light btn"><i class="material-icons left">skip_previous</i>Annuler</button>
         </div>
         <div class="s4 offset-s4 col">
-          <a class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Supprimer la tâche</a>
+          <button @click="delete_task" class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Supprimer la tâche</button>
         </div>
       </div>
     </div>
@@ -20,7 +20,12 @@ export default {
   name: 'DeleteTask',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      task: this.$store.state.task.selectedTask
+    }
+  },
+  methods: {
+    delete_task () {
+      this.$store.dispatch('delete_task')
     }
   }
 }

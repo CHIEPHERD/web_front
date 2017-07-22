@@ -60,6 +60,15 @@ export default {
         }
       ]
     }
+  },
+  methods: {
+    add_task () {
+      this.$store.dispatch('add_task').then((response) => {
+        console.log('use response of add task')
+      }).catch((err) => {
+        console.log(err)
+      })
+    }
   }
 }
 </script>

@@ -1,4 +1,4 @@
-<template>
+l<template>
   <div class="row">
     <div class="col s4 offset-s8">
       <a class="waves-effect waves-light btn" href="#addProjectModal"s><i class="material-icons left">library_add</i>
@@ -48,12 +48,12 @@
 
             <!-- Add the view of add user -->
           </div>
-          <button @click="add_this_project" class="waves-effect waves-light btn"><i class="material-icons left">done</i>Valider</button>
+
 
         </form>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        <button @click="add_this_project" class="waves-effect waves-light btn"><i class="material-icons left">done</i>Valider</button>
       </div>
     </div>
   </div>
@@ -74,9 +74,9 @@ export default {
   },
   methods: {
     add_this_project (event) {
-      console.log(this.$data)
-      // this.$store.commit('add_project', this.$data)
-      this.$store.dispatch('init_projects_from_rmq')
+      this.$store.dispatch('add_projects_from_rmq').then((response) => {
+        this.$router.push({name: 'Project'})
+      })
     }
   },
 

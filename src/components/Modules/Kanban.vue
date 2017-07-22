@@ -13,6 +13,8 @@
       <router-link :to="{ name: 'ReadTask', params: {} }">Détails</router-link>
     </div>
     </kanban-board>
+
+    <router-link class="waves-effect waves-light btn" :to="{ name: 'NewTask' }"><i class="material-icons left">done</i>Ajouter une tâche</router-link>
   </div>
 </template>
 
@@ -23,14 +25,13 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      stages: ['on-hold', 'in-progress', 'needs-review', 'approved'],
-      blocks: [
-        {
-          id: 1,
-          status: 'on-hold',
-          title: 'Test'
-        }
-      ]
+      stages: this.$store.state.tasks.stages,
+      blocks: this.$store.state.tasks.tasks
+    }
+  },
+  computed: {
+    blocks () {
+      return this.$store.state.tasks
     }
   }
 }

@@ -18,20 +18,34 @@
        @input="set_nick_name" type="text" class="validate">
       <label for="nick_name">Pseudo</label>
     </div>
-    <div class="input-field col s12">
-      <input id="email_inscription" type="text"
-        :value="email" @input="set_email" class="validate">
-      <label for="email_inscription">Email</label>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email_inscription" type="text"
+          v-bind:class="{ 'invalid': $v.email.$error }"
+          v-model='email' :value="email" @input="set_email" class="validate">
+        <label for="email_inscription">Email</label>
+      </div>
+      <label v-if="$v.email.$invalid">Veuillez rentrer une adresse email valide</label>
     </div>
-    <div class="input-field col s12">
-      <input id="password_inscription" type="password"
-        :value="password" @input="set_password" class="validate">
-      <label for="password_inscription">Mot de passe</label>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password_inscription" type="password"
+          v-bind:class="{ 'invalid': $v.password.$error }"
+          v-model='password' :value="password" @input="set_password">
+        <label for="password_inscription">Mot de passe</label>
+      </div>
+      <label v-if="$v.password.$invalid">Le mot de passe doit être entre {{$v.password.$params.minLength.min}} et {{$v.password.$params.maxLength.max}} charactère</label>
     </div>
-    <div class="input-field col s12">
-      <input id="confirm_password_inscription" type="password"
-        :value="confirm_password" @input="set_cpassword" class="validate">
-      <label for="confirm_password_inscription">Confirmation de mot de passe</label>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="confirm_password_inscription" type="password"
+          v-bind:class="{ 'invalid': $v.confirm_password.$error }"
+          v-model='confirm_password'  :value="confirm_password" @input="set_cpassword" class="validate">
+        <label for="confirm_password_inscription">Confirmation de mot de passe</label>
+      </div>
+      <label v-if="$v.confirm_password.$invalid">Vos mots de passe ne concorde pas</label>
     </div>
     <div class="row">
      <button @click="inscription" class="btn waves-effect waves-light" type="submit" name="action">Valider
@@ -45,6 +59,8 @@
 </template>
 
 <script>
+import { required, sameAs, email, minLength, maxLength } from 'vuelidate/lib/validators'
+//
 export default {
   name: 'Inscription',
   data () {
@@ -56,6 +72,19 @@ export default {
       password: this.$store.state.auth.inscription_user.password,
       confirm_password: this.$store.state.auth.inscription_user.password_confirmation,
       errorMessage: ''
+    }
+  },
+  validations: {
+    email: {
+      required,
+      email
+    },
+    password: {
+      minLength: minLength(4),
+      maxLength: maxLength(25)
+    },
+    confirm_password: {
+      sameAsPassword: sameAs('password')
     }
   },
   methods: {
@@ -78,11 +107,16 @@ export default {
       this.$store.commit('set_cpassword', e.target.value)
     },
     inscription (event) {
-      this.$store.dispatch('inscription').then((response) => {
-        this.$router.push({name: 'Project'})
-      }).catch((err) => {
-        this.$data.errorMessage = err
-      })
+      if (this.$v.$invalid === false) {
+        this.$store.dispatch('inscription').then((response) => {
+          this.$router.push({name: 'Project'})
+        }).catch((err) => {
+          console.log(err)
+          this.$data.errorMessage = err.name + ': ' + err.message
+        })
+      } else {
+        this.$data.errorMessage = 'L\'un des champs est invalide'
+      }
     }
   }
 }

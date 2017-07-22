@@ -8,7 +8,7 @@
     </div>
     <div class="row">
      <div class="input-field col s12">
-       <input :value="password" @input="set_password" id="password" type="password" class="validate">
+       <input :value="password" @input="set_password" id="password_c" type="password" class="validate">
        <label for="password">Password</label>
      </div>
     </div>
@@ -17,7 +17,7 @@
         <i class="material-icons right">send</i>
       </button>
     </div>
-    <label/> {{errorMessage}} </label>
+    <label> {{errorMessage}}</label>
   </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
       this.$store.dispatch('connection').then((response) => {
         this.$router.push({name: 'Home'})
       }).catch((err) => {
-        this.$data.errorMessage = err
+        this.$data.errorMessage = err.name + ':' + err.message
       })
     }
   }

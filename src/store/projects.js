@@ -62,9 +62,6 @@ export default {
       state.filteredProjects = _.filter(state.projects,
         function (p) { return _.startsWith(p.title, value) })
     },
-    select_project (state, id) {
-      console.log('add_project')
-    },
     add_project (state, data) {
       console.log('add_project')
       let project = {
@@ -82,18 +79,24 @@ export default {
   },
   actions: {
     init_projects_from_rmq () {
-      let listRoad = 'chiepherd.project.list'
-      rmq.connect(listRoad, {}).then((response) => {
-        console.log('object is here')
+      return new Promise((resolve, reject) => {
+        let listRoad = 'chiepherd.project.list'
+
+        rmq.connect(listRoad, {}).then((response) => {
+          resolve(response)
+        })
+        .catch((err) => { reject(err) })
       })
-      .catch((err) => { console.log(err) })
     },
     add_project_using_rmq ({state, commit}, data) {
-      let addRoad = 'chiepherd.project.create'
+      return new Promise((resolve, reject) => {
+        let addRoad = 'chiepherd.project.create'
 
-      rmq.connect(addRoad, data).then((response) => {
-
-      }).catch((err) => { console.log(err) })
+        rmq.connect(addRoad, data).then((response) => {
+          commit('add_project', response)
+          resolve(response)
+        }).catch((err) => { reject(err) })
+      })
     }
   }
 }
