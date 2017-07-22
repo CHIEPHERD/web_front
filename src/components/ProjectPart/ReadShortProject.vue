@@ -33,6 +33,9 @@ export default {
       this.$store.commit('detail_project', project)
       this.$router.push({name: 'DetailProject'})
     }
+  },
+  beforeCreate () {
+    this.$store.dispatch('')
   }
 }
 </script>

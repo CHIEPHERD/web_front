@@ -40,9 +40,14 @@ export default {
     },
     connection (e) {
       this.$store.dispatch('connection').then((response) => {
+        this.$session.start()
+        this.$session.set('jwt', response.data.sessionID)
+        // Vue.http.headers.common['Authorization'] = 'Bearer ' + response.data.sessionID
+
         this.$router.push({name: 'Home'})
       }).catch((err) => {
-        this.$data.errorMessage = err.name + ':' + err.message
+        console.log(err)
+        this.$data.errorMessage = 'Mauvais email ou password'
       })
     }
   }

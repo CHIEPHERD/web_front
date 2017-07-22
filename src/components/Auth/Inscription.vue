@@ -112,7 +112,7 @@ export default {
           this.$router.push({name: 'Project'})
         }).catch((err) => {
           console.log(err)
-          this.$data.errorMessage = err.name + ': ' + err.message
+          this.$data.errorMessage = err.errors.message
         })
       } else {
         this.$data.errorMessage = 'L\'un des champs est invalide'

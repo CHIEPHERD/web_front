@@ -4,6 +4,7 @@ const chiepherdApiUrl = '192.168.56.103'
 const chiepherdApiPort = 3000
 const chiepherdFullPath = 'http://' + chiepherdApiUrl + ':' + chiepherdApiPort
 
+// is_connected is not used anymore
 export default {
   state: {
     inscription_user: {
@@ -61,8 +62,9 @@ export default {
         .then((response) => {
           commit('set_connect_email', '')
           commit('set_connect_password', '')
-          commit('inverse_connected_status')
-          commit('set_admin', response)
+
+          // commit('inverse_connected_status')
+          commit('set_admin', response.data)
           resolve(response)
         }).catch((err) => {
           reject(err)
@@ -86,11 +88,18 @@ export default {
           })
       })
     },
-    deconnection ({state, commit}) {
+    deconnection ({state, commit}, sessionID) {
+      const HTTP = axios.create({
+        baseURL: chiepherdFullPath
+      })
+
+      /* headers: {
+        Authorization: 'Bearer ' + sessionID
+      } */
       return new Promise((resolve, reject) => {
-        axios.get(chiepherdFullPath + '/admin/logout')
+        HTTP.get('/admin/logout')
         .then((response) => {
-          commit('inverse_connected_status')
+          // commit('inverse_connected_status')
           commit('set_admin', {})
           resolve(response)
         }).catch((err) => {

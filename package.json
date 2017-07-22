@@ -25,6 +25,7 @@
     "vue": "^2.2.2",
     "vue-kanban": "^1.0.3",
     "vue-router": "^2.3.0",
+    "vue-session": "^0.9.4",
     "vuelidate": "^0.5.0",
     "vuex": "^2.3.1"
   },

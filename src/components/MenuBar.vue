@@ -8,9 +8,9 @@
         <a href="#" class="brand-logo center">Logo</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="#">Home</a></li>
-          <li v-if="!is_connected"> <router-link :to="{ name: 'Auth' }">Connexion</router-link></li>
-          <li v-if="is_connected"> <a  href="#" @click="disconnect">Préférences</a></li>
-          <li v-if="is_connected"> <a href="#" @click="disconnect">Deconnexion</a></li>
+          <li v-if="!this.$session.exists()"> <router-link :to="{ name: 'Auth' }">Connexion</router-link></li>
+          <li v-if="this.$session.exists()"> <a  href="#" @click="disconnect">Préférences</a></li>
+          <li v-if="this.$session.exists()"> <a href="#" @click="disconnect">Deconnexion</a></li>
         </ul>
       </div>
     </nav>
@@ -31,7 +31,10 @@ export default {
   },
   methods: {
     disconnect (e) {
-      this.$store.dispatch('deconnection')
+      this.$session.destroy()
+      this.$store.dispatch('deconnection', this.$session.get('jwt')).then((response) => {
+        this.$router.push({name: 'Home'})
+      })
     }
   },
   mounted () {

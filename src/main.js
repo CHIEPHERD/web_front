@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import vueKanban from 'vue-kanban'
 import vuelidate from 'vuelidate'
+import VueSession from 'vue-session'
 
 import MyStore from './store'
 import App from './App'
@@ -13,6 +14,7 @@ import 'materialize-css/dist/css/materialize.min.css'
 Vue.config.productionTip = false
 Vue.use(vueKanban)
 Vue.use(vuelidate)
+Vue.use(VueSession)
 
 const store = MyStore
 /* eslint-disable no-new */
