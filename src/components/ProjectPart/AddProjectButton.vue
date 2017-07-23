@@ -12,7 +12,7 @@ l<template>
         <form class="col s12">
           <div class="row">
             <div class="input-field col offset-s3 s6">
-              <input v-model="project_name" id="project_name" type="text" class="validate">
+              <input v-model="name" id="project_name" type="text" class="validate">
               <label for="project_name">Nom du projet</label>
             </div>
           </div>
@@ -48,8 +48,6 @@ l<template>
 
             <!-- Add the view of add user -->
           </div>
-
-
         </form>
       </div>
       <div class="modal-footer">
@@ -66,7 +64,7 @@ export default {
   name: 'AddProjectButton',
   data () {
     return {
-      project_name: '',
+      name: '',
       initials: '',
       description: '',
       is_admin: false
@@ -74,7 +72,8 @@ export default {
   },
   methods: {
     add_this_project (event) {
-      this.$store.dispatch('add_projects_from_rmq').then((response) => {
+      this.$store.dispatch('add_projects_from_rmq', this.$data, this.$store.state.auth.admin.email)
+      .then((response) => {
         this.$router.push({name: 'Project'})
       })
     }

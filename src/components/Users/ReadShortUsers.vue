@@ -30,6 +30,9 @@ export default {
     detail_user (e) {
       this.$store.commit('detail_user', event.target.value)
     }
+  },
+  beforeCreate () {
+    this.$store.dispatch('init_users_from_rmq')
   }
 }
 </script>

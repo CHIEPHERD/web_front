@@ -1,6 +1,6 @@
 export default {
   wsbroker: '192.168.56.200',
-  wsport: 15675,
+  wsport: 5672,
   bottleneck: 'chiepherd.main',
   username: 'root',
   password: 'root',
@@ -11,3 +11,4 @@ export default {
     enabled: false
   }
 }
+// 15675

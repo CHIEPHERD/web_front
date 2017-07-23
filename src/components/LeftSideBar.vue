@@ -7,6 +7,7 @@
       <li><router-link class="collection-item" :to="{ name: 'Home' }">Accueil</router-link></li>
       <li><router-link class="collection-item" :to="{ name: 'Project' }">Projets</router-link></li>
       <li><router-link class="collection-item" :to="{ name: 'Users' }">Utilisateurs</router-link></li>
+      <li><router-link class="collection-item" :to="{ name: 'Admin' }">Administrateurs</router-link></li>
       <li><router-link class="collection-item" :to="{ name: 'Kanban'}">Kanban</router-link></li>
     </ul>
     <router-view class="col s12"></router-view>

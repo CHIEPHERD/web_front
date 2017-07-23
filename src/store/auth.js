@@ -64,7 +64,7 @@ export default {
           commit('set_connect_password', '')
 
           // commit('inverse_connected_status')
-          commit('set_admin', response.data)
+          commit('set_admin', response.data.admin)
           resolve(response)
         }).catch((err) => {
           reject(err)

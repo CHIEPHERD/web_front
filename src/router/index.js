@@ -13,6 +13,7 @@ import GANTT from 'ç/Modules/GANTT'
 import Project from 'ç/Modules/Project'
 import Task from 'ç/Modules/Task'
 import Users from 'ç/Modules/Users'
+import Admins from 'ç/Modules/Admin'
 
 import ListProject from 'ç/ProjectPart/ListProject'
 import ReadShortProject from 'ç/ProjectPart/ReadShortProject'
@@ -28,6 +29,10 @@ import AddUserButton from 'ç/Users/AddUserButton'
 import SearchUser from 'ç/Users/SearchUser'
 import CreateUser from 'ç/Users/CreateUser'
 import ReadShortUsers from 'ç/Users/ReadShortUsers'
+
+import ReadShortAdmin from 'ç/Admin/ReadShortAdmins'
+import SearchAdmin from 'ç/Admin/SearchAdmin'
+import ReadFullAdmin from 'ç/Admin/ReadFullAdmin'
 
 Vue.use(Router)
 
@@ -87,6 +92,27 @@ export default new Router({
                     search: SearchUser,
                     new: CreateUser
                   }
+                }
+              ]
+            },
+            {
+              path: 'admins',
+              name: 'Admin',
+              component: Admins,
+              children: [
+                {
+                  path: '',
+                  name: 'AllAdmin',
+                  components:
+                  {
+                    search: SearchAdmin,
+                    default: ReadShortAdmin
+                  }
+                },
+                {
+                  path: 'detail',
+                  name: 'DetailAdmin',
+                  component: ReadFullAdmin
                 }
               ]
             },

@@ -2,9 +2,9 @@
   <div>
     <div class="row" v-for="project in projects">
       <div class="offset-s1 s10 col card">
-        <h4> {{project.title}}</h4>
+        <h4> {{project.name}}</h4>
         <div class="col s10 offset-s1">
-          <p> {{project.corpus}}</p>
+          <p> {{project.description}}</p>
         </div>
         <div class="row">
           <div class="offset-s6 s2 col">{{project.numberOfUser}} utilisateurs</div>
@@ -35,7 +35,7 @@ export default {
     }
   },
   beforeCreate () {
-    this.$store.dispatch('')
+    this.$store.dispatch('init_projects_from_rmq')
   }
 }
 </script>
