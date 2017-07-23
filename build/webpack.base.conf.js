@@ -22,8 +22,11 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': resolve('src')
-    }
+      '@': resolve('src'),
+      'ç': resolve('src/components'),
+      'jquery': resolve('node_modules/jquery/dist/jquery'),
+      'mqttws31': resolve('node_modules/ng2-mqtt/mqttws31')
+      }
   },
   module: {
     rules: [
