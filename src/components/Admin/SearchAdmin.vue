@@ -6,7 +6,7 @@
       <i class="material-icons prefix">search</i>
       <input :value="admin_last_name" @input="search_admin"
         type="text" id="autocomplete-input" class="autocomplete">
-      <label for="autocomplete-input">Search project</label>
+      <label for="autocomplete-input">Recherche d'administrateur</label>
     </div>
   </div>
 

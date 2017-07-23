@@ -29,6 +29,7 @@ import AddUserButton from 'ç/Users/AddUserButton'
 import SearchUser from 'ç/Users/SearchUser'
 import CreateUser from 'ç/Users/CreateUser'
 import ReadShortUsers from 'ç/Users/ReadShortUsers'
+import ReadFullUser from 'ç/Users/ReadFullUser'
 
 import ReadShortAdmin from 'ç/Admin/ReadShortAdmins'
 import SearchAdmin from 'ç/Admin/SearchAdmin'
@@ -91,6 +92,13 @@ export default new Router({
                     add: AddUserButton,
                     search: SearchUser,
                     new: CreateUser
+                  }
+                },
+                {
+                  path: 'read',
+                  name: 'ReadFullUser',
+                  components: {
+                    default: ReadFullUser
                   }
                 }
               ]

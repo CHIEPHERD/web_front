@@ -56,10 +56,10 @@
       </div>
 
       <div class="row">
-        <div class="offset-s6 s3 col">
+        <div class="s4 col">
           <button @click="precedent" class="waves-effect waves-light btn"><i class="material-icons left">skip_previous</i>Annuler</button>
         </div>
-        <div class="col s3">
+        <div class="offset-s4 col s4">
           <button class="waves-effect waves-light btn"><i class="material-icons left">done</i>Valider</button>
         </div>
       </div>
@@ -82,7 +82,7 @@ export default {
       this.$store.dispatch('update_admin_from_rmq', this.$data.admin)
     },
     precedent () {
-      // this.$router.go(-1)
+      this.$router.go(-1)
     }
   }
 }

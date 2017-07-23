@@ -29,6 +29,7 @@ export default {
   methods: {
     detail_user (e) {
       this.$store.commit('detail_user', event.target.value)
+      this.$router.push({name: 'ReadFullUser'})
     }
   },
   beforeCreate () {

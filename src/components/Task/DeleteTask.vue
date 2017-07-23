@@ -5,7 +5,7 @@
 
       <div class="row">
         <div class="s4 col">
-          <button class="waves-effect waves-light btn"><i class="material-icons left">skip_previous</i>Annuler</button>
+          <button @click="precedent" class="waves-effect waves-light btn"><i class="material-icons left">skip_previous</i>Annuler</button>
         </div>
         <div class="s4 offset-s4 col">
           <button @click="delete_task" class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Supprimer la tâche</button>
@@ -26,6 +26,9 @@ export default {
   methods: {
     delete_task () {
       this.$store.dispatch('delete_task')
+    },
+    precedent () {
+      this.$router.go('-1')
     }
   }
 }

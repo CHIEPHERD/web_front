@@ -30,8 +30,8 @@ export default {
       state.filteredUsers = _.filter(state.users,
         function (u) { return _.startsWith(u.last_name, userLastName) })
     },
-    select_user (state, user) {
-      console.log('select_user')
+    detail_user (state, user) {
+      state.selectedUser = user
     },
     add_user (state) {
       console.log('add_user')
