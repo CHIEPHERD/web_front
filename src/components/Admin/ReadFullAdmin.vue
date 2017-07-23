@@ -57,7 +57,7 @@
 
       <div class="row">
         <div class="offset-s6 s3 col">
-          <router-link :to="{ name: 'Admin', params: {} }" class="waves-effect waves-light btn"><i class="material-icons left">skip_previous</i>Annuler</router-link>
+          <button @click="precedent" class="waves-effect waves-light btn"><i class="material-icons left">skip_previous</i>Annuler</button>
         </div>
         <div class="col s3">
           <button class="waves-effect waves-light btn"><i class="material-icons left">done</i>Valider</button>
@@ -80,6 +80,9 @@ export default {
   methods: {
     update_admin () {
       this.$store.dispatch('update_admin_from_rmq', this.$data.admin)
+    },
+    precedent () {
+      // this.$router.go(-1)
     }
   }
 }

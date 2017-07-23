@@ -1,14 +1,15 @@
 import rmq from '../rabbitMQ'
 
-//an user is binded to a task by his assignment
+// an user is binded to a task by his assignment
 export default {
   state: {
-    blocks: [{
+    tasks: [{
       uuid: 1,
+      id: 1,
       status: 'on-hold'
     }],
     stages: ['on-hold', 'in-progress', 'needs-review', 'approved'],
-    isActive: false
+    isActive: true
   },
   mutations: {
     bind_task_status (state) {
@@ -38,10 +39,10 @@ export default {
         commit('init_task', task)
       }).catch((err) => { console.log(err) })
     },
-    update_stage_from_rmq ({commit}, stage) => {
+    update_stage_from_rmq ({commit}, stage) {
 
     },
-    delete_status_from_rmq ({commit}, status) => {
+    delete_status_from_rmq ({commit}, status) {
 
     }
   }

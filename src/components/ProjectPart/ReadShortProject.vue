@@ -7,8 +7,8 @@
           <p> {{project.description}}</p>
         </div>
         <div class="row">
-          <div class="offset-s6 s2 col">{{project.numberOfUser}} utilisateurs</div>
-          <div class="col s2">{{project.numberOfTask}} tâches</div>
+        <!--  <div class="offset-s6 s2 col">{{project.user.length() || 0}} utilisateurs</div>
+          <div class="col s2">{{project.user.length() || 0}} tâches</div> -->
           <div class="col s2">
             <button @click="detail_project(project)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">subject</i></button>
           </div>
@@ -30,8 +30,13 @@ export default {
   methods: {
     detail_project (project) {
       console.log('detail_project')
+      console.log(project)
       this.$store.commit('detail_project', project)
       this.$router.push({name: 'DetailProject'})
+
+      /* this.$store.dispatch('detail_project_from_rmq', project).then(() => {
+        this.$router.push({name: 'DetailProject'})
+      }) */
     }
   },
   beforeCreate () {

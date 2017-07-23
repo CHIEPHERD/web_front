@@ -4,11 +4,11 @@
 
       <span class="card-title">Nouvelle tâche</span>
       <div class="input-field col s12">
-        <input id="title" type="text" class="validate">
-        <label for="title">Email</label>
+        <input id="title" type="text" class="validate" v-model="task.title">
+        <label for="title">Titre</label>
       </div>
       <div class="input-field col s12">
-        <textarea id="description" class="materialize-textarea"></textarea>
+        <textarea id="description" class="materialize-textarea" v-model="task.description"></textarea>
         <label for="description">Description</label>
       </div>
 
@@ -49,8 +49,7 @@ export default {
   name: 'NewTask',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      taskTypes: ['Feature', 'Fix'],
+      taskTypes: this.$store.state.tasks.types,
       affectation: [
         {
           name: 'Someone'
@@ -69,6 +68,9 @@ export default {
         console.log(err)
       })
     }
+  },
+  beforeCreate () {
+    this.$store.dispatch('get_task_assgnment')
   }
 }
 </script>

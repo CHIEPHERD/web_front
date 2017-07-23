@@ -42,6 +42,7 @@ export default {
       this.$store.dispatch('connection').then((response) => {
         this.$session.start()
         this.$session.set('jwt', response.data.sessionID)
+        this.$session.set('admin', response.data.admin)
         // Vue.http.headers.common['Authorization'] = 'Bearer ' + response.data.sessionID
 
         this.$router.push({name: 'Home'})

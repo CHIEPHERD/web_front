@@ -4,11 +4,11 @@
 
       <span class="card-title">Nom de la tâche</span>
       <div class="input-field col s12">
-        <input id="title" type="text" class="validate">
+        <input id="title" type="text" class="validate" v-model="title">
         <label for="title">Titre</label>
       </div>
       <div class="input-field col s12">
-        <textarea id="description" class="materialize-textarea"></textarea>
+        <textarea id="description" class="materialize-textarea" v-model='task.title'></textarea>
         <label for="description">Description</label>
       </div>
 
@@ -16,6 +16,7 @@
         <div class="col s12">
           <h5>Type de tâche</h5>
           <select class="dropdown-button btn">
+            <option v-model='task.type' selected>{{task.type}}</option>
             <option v-for="type in taskTypes">{{type}}</option>
           </select>
         </div>
@@ -26,28 +27,29 @@
           <h5>Affectation</h5>
           <select class="row dropdown-button btn">
             <option v-for="people in affectation">
-              {{people.name}}</option>
+              {{people.name}}
+            </option>
           </select>
         </div>
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col s12">
           <h5>Tâche parent</h5>
           <select class="dropdown-button btn">
             <option v-for="task in parentTask">{{task.name}}</option>
           </select>
         </div>
-      </div>
+      </div> -->
 
       <div class="row">
         <div class="col s12">
           <h5>Sous tâches</h5>
           <ul>
-            <li v-for="task in childTask">{{task.name}}</li>
+            <li v-for="task in task.children">{{task.name}}</li>
           </ul>
           <h6> Ajouter une tâche existante </h6>
           <select class="dropdown-button btn">
-            <option v-for="task in normalTask">{{task.name}}</option>
+            <option v-for="task in allTask">{{task.name}}</option>
           </select>
         </div>
       </div>
@@ -71,44 +73,19 @@
 </template>
 
 <script>
+import _ from 'lodash'
+
 export default {
   name: 'ReadTask',
   data () {
     return {
-      taskTypes: ['Feature', 'Fix'],
-      affectation: [
-        {
-          name: 'Someone'
-        },
-        {
-          name: 'Someone else'
-        }
-      ],
-      parentTask: [
-        {
-          name: 'parent Task 1'
-        },
-        {
-          name: 'parent Task 2'
-        }
-      ],
-      normalTask: [
-        {
-          name: 'normal Task 1'
-        },
-        {
-          name: 'normal Task 2'
-        }
-      ],
-      childTask: [
-        {
-          name: 'child Task 1'
-        },
-        {
-          name: 'child Task 2'
-        }
-      ]
+      allTask: [],
+      task: this.$store.state.tasks.selectedTask
     }
+  },
+  mouted (state) {
+    this.$data.allTask = _.filter(this.$store.state.tasks.tasks,
+      {projectUuid: this.$store.state.tasks.selectedTask.projectUuid})
   }
 }
 </script>

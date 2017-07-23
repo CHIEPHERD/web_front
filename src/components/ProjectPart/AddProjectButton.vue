@@ -1,7 +1,7 @@
 l<template>
   <div class="row">
     <div class="col s4 offset-s8">
-      <a class="waves-effect waves-light btn" href="#addProjectModal"s><i class="material-icons left">library_add</i>
+      <a class="waves-effect waves-light btn" href="#addProjectModal"><i class="material-icons left">library_add</i>
         Ajouter un projet</a>
     </div>
 
@@ -18,8 +18,8 @@ l<template>
           </div>
           <div class="row">
             <div class="input-field col offset-s3 s6">
-              <input v-model="initials" id="initials" type="text" class="validate">
-              <label for="initials">Nom du projet</label>
+              <input v-model="label" id="initials" type="text" class="validate">
+              <label for="initials">Initials</label>
             </div>
           </div>
           <div class="row">
@@ -65,14 +65,15 @@ export default {
   data () {
     return {
       name: '',
-      initials: '',
+      label: '',
       description: '',
-      is_admin: false
+      is_admin: false,
+      email: 'user@email.fr'
     }
   },
   methods: {
     add_this_project (event) {
-      this.$store.dispatch('add_projects_from_rmq', this.$data, this.$store.state.auth.admin.email)
+      this.$store.dispatch('add_projects_from_rmq', this.$data)
       .then((response) => {
         this.$router.push({name: 'Project'})
       })

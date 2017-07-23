@@ -9,9 +9,11 @@ export default {
         ancestorUuid: '',
         title: 'Write some data',
         description: '...description...',
-        type: 'Task'
+        type: 'Task',
+        children: []
       }
     ],
+    types: ['Feature', 'Fix', 'Epic', 'Task'],
     newTask: { }
   },
   mutations: {

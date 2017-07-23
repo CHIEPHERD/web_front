@@ -1,16 +1,69 @@
 <template>
   <div>
     <div class="offset-s1 s10 col card">
-      <h4> {{project.name}}</h4>
-      <div class="col s2">
-        <button @click="" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">subject</i></button>
+      <div class="col s4">
+        <h4> {{project.name}}</h4>
+      </div>
+      <div class="col s4 offset-s4">
+        <label>Projet </label>
+        <div class="switch">
+          <label>
+           Inactif
+           <input type="checkbox" v-model='project.visibility'>
+           <span class="lever"></span>
+           Actif
+          </label>
+        </div>
       </div>
       <div class="col s10 offset-s1">
-        <p> {{project.description}}
-        </p>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea v-model="project.description" id="description" class="materialize-textarea"></textarea>
+            <label for="description">Description</label>
+          </div>
+        </div>
       </div>
-      <div class="offset-s6 s2 col">{{project.numberOfUser}} utilisateurs</div>
-      <div class="col s2">{{project.numberOfTask}} tâches</div>
+      <div class="col s6">{{users.length}} utilisateurs</div>
+      <div class="col s6">{{tasks.length}} tâches</div>
+
+      <div class="col s10 offset-s1">
+        <div class="row">
+          <div class="switch">
+            Kanban
+            <label>
+             Inactif
+             <input type="checkbox" v-model='showKanban'>
+             <span class="lever"></span>
+             Actif
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <kanban-board v-if="showKanban" :stages="stages" :blocks="tasks">
+            <div v-for="task in tasks" :slot="task.id">
+            <div>
+             <strong>id:</strong> {{ task.id }}
+            </div>
+            <div>
+             {{ task.title }}
+            </div>
+
+            <router-link :to="{ name: 'ReadTask', params: {} }">Détails</router-link>
+          </div>
+          </kanban-board>
+
+          <label>Liste des tâches</label>
+          <li>
+            <ul v-for="task in tasks">{{task.type}} {{task.name}}</ul>
+          </li>
+
+          <label>Liste des utilisateurs</label>
+          <li>
+            <ul v-for="user in users">{{user.lastname}} {{user.firstname}}</ul>
+          </li>
+          <router-link class="waves-effect waves-light btn" :to="{ name: 'NewTask' }"><i class="material-icons left">done</i>Ajouter une tâche</router-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -19,10 +72,29 @@
 
 export default {
   name: 'ReadFullProject',
+  data () {
+    return {
+      tasks: [],
+      users: [],
+      stages: this.$store.state.kanban.stages,
+      showKanban: true
+    }
+  },
   computed: {
     project () {
       return this.$store.state.project.selectedProject
     }
+  },
+  beforeCreate () {
+    // get all Users of Project
+    this.$store.dispatch('get_all_users_of_project').then((response) => {
+      this.$data.users = response
+    })
+
+    // get all tasks of Project
+    this.$store.dispatch('get_all_tasks_of_project').then((response) => {
+      this.$data.tasks = response
+    })
   }
 }
 </script>
@@ -34,6 +106,6 @@ h1, h2 {
 }
 
 a {
-  color: #42b983;
+  color: white;
 }
 </style>

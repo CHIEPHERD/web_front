@@ -117,6 +117,11 @@ export default new Router({
               ]
             },
             {
+              path: 'preference',
+              name: 'Preference',
+              component: ReadFullAdmin
+            },
+            {
               path: 'projects',
               name: 'Project',
               component: Project,
