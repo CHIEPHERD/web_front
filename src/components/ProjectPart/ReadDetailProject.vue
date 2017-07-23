@@ -61,7 +61,19 @@
           <li>
             <ul v-for="user in users">{{user.lastname}} {{user.firstname}}</ul>
           </li>
-          <router-link class="waves-effect waves-light btn" :to="{ name: 'NewTask' }"><i class="material-icons left">done</i>Ajouter une tâche</router-link>
+          <router-link class="waves-effect waves-light btn" :to="{ name: 'NewTask' }"><i class="material-icons left">library_add</i>Ajouter une tâche</router-link>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="s4 col">
+          <button @click="precedent" class="waves-effect waves-light btn"><i class="material-icons left">skip_previous</i>Annuler</button>
+        </div>
+        <div class="s4 col">
+          <button @click="show_delete" class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Supprimer</button>
+        </div>
+        <div class="s4 col">
+          <button @click="update_project" class="waves-effect waves-light btn"><i class="material-icons left">done</i>Valider</button>
         </div>
       </div>
     </div>
@@ -78,6 +90,15 @@ export default {
       users: [],
       stages: this.$store.state.kanban.stages,
       showKanban: true
+    }
+  },
+  methods: {
+    precedent () {
+      this.$router.go(-1)
+    },
+    show_delete () {
+    },
+    update_project () {
     }
   },
   computed: {

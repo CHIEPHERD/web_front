@@ -7,6 +7,7 @@ import project from './projects'
 import users from './users'
 import admins from './admins'
 import tasks from './tasks'
+import tasksAssignment from './tasks_assignment'
 
 Vue.use(VueX)
 
@@ -17,6 +18,7 @@ export default new VueX.Store({
     kanban: kanban,
     users: users,
     tasks: tasks,
-    admins: admins
+    admins: admins,
+    tasksAssignment: tasksAssignment
   }
 })

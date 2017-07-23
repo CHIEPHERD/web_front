@@ -1,4 +1,5 @@
 import rmq from '../rabbitMQ'
+import _ from 'lodash'
 
 export default {
   state: {
@@ -14,18 +15,26 @@ export default {
       }
     ],
     types: ['Feature', 'Fix', 'Epic', 'Task'],
-    newTask: { }
+    selectedTask: {
+      uuid: '',
+      projectUuid: '',
+      ancestorUuid: '',
+      title: 'Write some data',
+      description: '...description...',
+      type: 'Task',
+      children: []
+    }
   },
   mutations: {
-    select_task (state) {
-      console.log('select_tasks')
+    detail_task (state, task) {
+      state.selectedTask = task
     },
-    add_task (state) {
-      console.log('add_tasks')
+    add_task (state, task) {
+      state.tasks = _.concat(state.tasks, task)
     }
   },
   actions: {
-    add_task ({commit}, task) {
+    add_task_on_rmq ({commit}, task) {
       let addRoad = 'chiepherd.tasks.create'
       rmq.connect(addRoad, task).then((response) => {
         commit('add_task', task)

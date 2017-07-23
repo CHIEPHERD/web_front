@@ -15,8 +15,8 @@
           <router-view name="new"></router-view>
         </form>
       </div>
-
     </div>
+
   </div>
 </template>
 

@@ -4,14 +4,19 @@ import rmq from '../rabbitMQ'
 export default {
   state: {
     projects: [],
-    filteredProjects: [],
+    filteredProjects: [{
+      id: 3,
+      name: 'thas',
+      description: 'Thalassius vero ea tempestate praefectus praetorio praesens adrogantis ingenii, considerans incitationem eius ad multorum non maturitate vel consiliis mitigabat, ut aliquotiens celsae principum molliverunt, sed adversando iurgandoque cum parum ad rabiem potius evibrabat, Augustum actus eius exaggerando',
+      users: [],
+      tasks: []
+    }],
     selectedProject: {
       id: 3,
       name: 'thas',
       description: 'Thalassius vero ea tempestate praefectus praetorio praesens adrogantis ingenii, considerans incitationem eius ad multorum non maturitate vel consiliis mitigabat, ut aliquotiens celsae principum molliverunt, sed adversando iurgandoque cum parum ad rabiem potius evibrabat, Augustum actus eius exaggerando',
       users: [],
       tasks: []
-
     }
   },
   mutations: {
@@ -67,18 +72,7 @@ export default {
         })
         .catch((err) => { reject(err) })
       })
-    }, /*
-    detail_project_from_rmq ({commit}) {
-      return new Promise((resolve, reject) => {
-        let detailRoad = 'chiepherd.project.show'
-
-        rmq.connect(detailRoad, {}).then((response) => {
-          commit('detail_project', response)
-          resolve(response)
-        })
-        .catch((err) => { reject(err) })
-      })
-    }, */
+    },
     get_all_tasks_of_project ({state}) {
       return new Promise((resolve, reject) => {
         let allTaskProject = 'chiepherd.project.task'

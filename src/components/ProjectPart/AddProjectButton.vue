@@ -73,8 +73,7 @@ export default {
   },
   methods: {
     add_this_project (event) {
-      this.$store.dispatch('add_projects_from_rmq', this.$data)
-      .then((response) => {
+      this.$store.dispatch('add_projects_from_rmq', this.$data).then((response) => {
         this.$router.push({name: 'Project'})
       })
     }

@@ -2,16 +2,21 @@
   <div>
     <div class="row" v-for="project in projects">
       <div class="offset-s1 s10 col card">
-        <h4> {{project.name}}</h4>
-        <div class="col s10 offset-s1">
-          <p> {{project.description}}</p>
-        </div>
+
+          <h4> {{project.name}}</h4>
+
         <div class="row">
-        <!--  <div class="offset-s6 s2 col">{{project.user.length() || 0}} utilisateurs</div>
-          <div class="col s2">{{project.user.length() || 0}} tâches</div> -->
           <div class="col s2">
             <button @click="detail_project(project)" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">subject</i></button>
           </div>
+          <div class="col s10">
+            <p> {{project.description}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <!-- <div class="offset-s6 s2 col">{{project.users.length}} utilisateurs</div>
+          <div class="col s2">{{project.tasks.length}} tâches</div> -->
+
         </div>
       </div>
     </div>

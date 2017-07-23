@@ -4,11 +4,11 @@
 
       <span class="card-title">Nom de la tâche</span>
       <div class="input-field col s12">
-        <input id="title" type="text" class="validate" v-model="title">
+        <input id="title" type="text" class="validate" v-model="task.title">
         <label for="title">Titre</label>
       </div>
       <div class="input-field col s12">
-        <textarea id="description" class="materialize-textarea" v-model='task.title'></textarea>
+        <textarea id="description" class="materialize-textarea" v-model="task.description"></textarea>
         <label for="description">Description</label>
       </div>
 
@@ -16,8 +16,8 @@
         <div class="col s12">
           <h5>Type de tâche</h5>
           <select class="dropdown-button btn">
-            <option v-model='task.type' selected>{{task.type}}</option>
-            <option v-for="type in taskTypes">{{type}}</option>
+            <option v-model='task.type' disabled selected>{{task.type}}</option>
+            <option v-for="type in types">{{type}}</option>
           </select>
         </div>
       </div>
@@ -32,15 +32,12 @@
           </select>
         </div>
       </div>
-      <!-- <div class="row">
+      <div class="row">
         <div class="col s12">
           <h5>Tâche parent</h5>
-          <select class="dropdown-button btn">
-            <option v-for="task in parentTask">{{task.name}}</option>
-          </select>
+          <label>{{task.name}}</label>
         </div>
-      </div> -->
-
+      </div>
       <div class="row">
         <div class="col s12">
           <h5>Sous tâches</h5>
@@ -79,11 +76,14 @@ export default {
   name: 'ReadTask',
   data () {
     return {
+      parentTask: {},
+      types: this.$store.state.tasks.types,
       allTask: [],
       task: this.$store.state.tasks.selectedTask
     }
   },
   mouted (state) {
+    this.$data.parentTask = _.find(this.$store.state.tasks.tasks, {uuid: this.$data.task.ancestorUuid})
     this.$data.allTask = _.filter(this.$store.state.tasks.tasks,
       {projectUuid: this.$store.state.tasks.selectedTask.projectUuid})
   }

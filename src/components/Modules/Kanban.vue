@@ -11,7 +11,7 @@
        {{ block.title }}
       </div>
 
-      <router-link :to="{ name: 'ReadTask', params: {} }">Détails</router-link>
+      <button class="waves-effect waves-light btn" @click="detail_task(task)">Détails</button>
     </div>
     </kanban-board>
 
@@ -25,10 +25,13 @@ export default {
 
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
       stages: this.$store.state.kanban.stages,
       tasks: this.$store.state.tasks.tasks
     }
+  },
+  detail_task (task) {
+    this.$store.commit('detail_task', task)
+    this.$router.push({name: 'ReadTask'})
   },
   computed: {
     blocks () {
