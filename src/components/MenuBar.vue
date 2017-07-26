@@ -8,7 +8,6 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="#">Home</a></li>
           <li v-if="!this.$session.exists()"> <router-link :to="{ name: 'Auth' }">Connexion</router-link></li>
-          <li v-if="this.$session.exists()"> <a  href="#" @click="preference">Préférences</a></li>
           <li v-if="this.$session.exists()"> <a href="#" @click="disconnect">Deconnexion</a></li>
         </ul>
       </div>
