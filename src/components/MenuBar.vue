@@ -5,11 +5,9 @@
       <ul id="nav-mobile-left" class="left hide-on-med-and-down">
       <li v-if="this.$session.exists()"><a href="#" data-activates="slide-out" id="leftSideBarTrigger"><i class="material-icons">view_headline</i></a></li>
       </ul>
-        <a href="#" class="brand-logo center">Logo</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li><a href="#">Home</a></li>
           <li v-if="!this.$session.exists()"> <router-link :to="{ name: 'Auth' }">Connexion</router-link></li>
-          <li v-if="this.$session.exists()"> <a  href="#" @click="preference">Préférences</a></li>
           <li v-if="this.$session.exists()"> <a href="#" @click="disconnect">Deconnexion</a></li>
         </ul>
       </div>

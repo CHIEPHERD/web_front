@@ -68,7 +68,7 @@ export default {
       label: '',
       description: '',
       is_admin: false,
-      email: 'user@email.fr'
+      email: 'user@test.fr'
     }
   },
   methods: {
