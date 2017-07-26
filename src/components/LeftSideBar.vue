@@ -2,7 +2,7 @@
   <div>
     <ul id="slide-out" class="side-nav">
       <div class="background">
-        <img src="../assets/logo.png">
+        <img src="../assets/logoChiepherd.png" width="200">
       </div>
       <li><router-link class="collection-item" :to="{ name: 'Home' }">Accueil</router-link></li>
       <li><router-link class="collection-item" :to="{ name: 'Project' }">Projets</router-link></li>
